@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Si usas este recurso, cítalo así."
+title: "Faro estadístico: tutor interactivo de análisis inferencial para 1.º de Psicología"
+authors:
+  - family-names: "Ramírez"
+    given-names: "Eduar"
+    affiliation: "Universidad Francisco de Vitoria"
+version: "1.0.0"
+date-released: "2026-10-30"
+license: MIT
+keywords:
+  - estadística inferencial
+  - psicología
+  - docencia
+  - chi-cuadrado
+  - t de Student
+  - recurso educativo abierto

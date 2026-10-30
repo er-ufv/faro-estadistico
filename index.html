@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faro estadístico · Tema 4 · UFV</title>
+  <meta name="description" content="Faro estadístico: recurso interactivo del Tema 4 (Análisis inferencial de los datos) de Fundamentos de Investigación en Psicología, UFV.">
+  <link rel="icon" href="img/faro.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header class="barra">
+  <a class="marca" href="#inicio" data-ir="inicio">
+    <svg class="faro-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M24 10.6 39 5.5v11.6L24 12.8z" fill="#F2C14E" opacity=".55"/><path d="M16 10.6 1 5.5v11.6l15-4.3z" fill="#F2C14E" opacity=".3"/><path d="M18 6.6 20 4l2 2.6V8.4h-4z" fill="#003865"/><rect x="16" y="8.4" width="8" height="5" rx="1.2" fill="#003865"/><circle cx="20" cy="10.9" r="1.7" fill="#F2C14E"/><path d="M16.8 13.4h6.4l2.2 20.6H14.6z" fill="#003865"/><path d="M15.9 21.6h8.2l.45 4.2h-9.1z" fill="#E5254B"/><rect x="12.5" y="34" width="15" height="2.2" rx="1.1" fill="#003865"/></svg>
+    <span class="marca-textos"><span class="marca-nombre">Faro estadístico</span><span class="marca-sub">Tema 4 · Análisis inferencial</span></span>
+  </a>
+  <button class="menu-movil" id="menuMovil" aria-label="Abrir menú">☰</button>
+  <nav class="nav" id="nav">
+    <button data-tab="inicio" class="activo">Inicio</button>
+    <button data-tab="fundamentos">Fundamentos</button>
+    <button data-tab="estadisticos">Usar los estadísticos</button>
+    <button data-tab="repaso">Repaso</button>
+    <button data-tab="cuaderno" class="nav-cuaderno">Mi cuaderno</button>
+    <a id="navGem" class="nav-gem" href="https://gemini.google.com/gem/1D5CJB-Std2_chtal0JgEdr7_7qSznhwU?usp=sharing" target="_blank" rel="noopener" title="Abre el tutor de IA en una pestaña nueva">💬 Antonio IA</a>
+  </nav>
+  <div id="usuario" class="usuario"></div>
+</header>
+
+<main>
+
+<!-- ================================================================ INICIO -->
+<section class="pestana activa" id="tab-inicio">
+  <div class="hero hero-faro">
+    <span class="eti-banner">Tema 4 · Análisis inferencial de los datos</span>
+    <h1>Faro estadístico</h1>
+    <p>De la muestra a la población: una guía para entender y usar la inferencia en Psicología.</p>
+  </div>
+  <div id="bienvenida" class="vineta-grande"></div>
+  <div id="espaciosInicio"></div>
+  <div class="caja clave"><b>Cómo usar Faro.</b> Empieza por <b>Fundamentos</b>: las ideas que sostienen la inferencia. Después pasa a <b>Usar los estadísticos</b>, donde el esquema de decisión te lleva a cada prueba. En cada módulo, tu docente te explica la idea clave, exploras una simulación y practicas. Todos los datos son <b>simulados</b> con fines docentes.</div>
+</section>
+
+<!-- ================================================================ ESPACIO 1 · FUNDAMENTOS -->
+<section class="pestana" id="tab-fundamentos">
+  <div class="hero banner-espacio">
+    <span class="eti-banner">Espacio 1</span>
+    <h1>Fundamentos</h1>
+    <p>Las ideas que sostienen la inferencia: muestras, intervalos de confianza, contraste de hipótesis y supuestos.</p>
+  </div>
+  <div id="rutaFund" class="ruta"></div>
+</section>
+
+<!-- ================================================================ ESPACIO 2 · USAR LOS ESTADÍSTICOS -->
+<section class="pestana" id="tab-estadisticos">
+  <div class="hero banner-espacio banner-arena">
+    <span class="eti-banner">Espacio 2</span>
+    <h1>Usar los estadísticos</h1>
+    <p>Elige la prueba adecuada con el esquema de decisión y aplícala a casos de Psicología.</p>
+  </div>
+  <div class="mapa-layout">
+    <div class="tarjeta"><h4>Esquema de decisión · 1.º curso</h4><div class="cuerpo">
+      <p class="small gris">Recorre el esquema de arriba abajo. Pulsa una caja para ver qué significa; las pruebas en azul oscuro abren su módulo.</p>
+      <p class="small gris solo-movil">Desliza el esquema hacia los lados para verlo completo.</p>
+      <div class="mapa-scroll"><div id="mapaDecision"></div></div>
+      <p class="small gris">Fuente: adaptación de Pardo et al. (2009) y Pardo y San Martín (2010), según las diapositivas del tema.</p>
+    </div></div>
+    <aside class="tarjeta mapa-info"><h4>¿Qué significa esta caja?</h4><div class="cuerpo" id="mapaInfo"></div></aside>
+  </div>
+  <div id="rutaEst" class="ruta"></div>
+</section>
+
+<!-- ================================================================ 1 MUESTRAS -->
+<section class="pestana" id="tab-muestras">
+<div class="paso-mod" data-paso="explora">
+  <div class="con-lateral">
+    <aside class="lateral">
+      <h3>Controles</h3>
+      <p class="small">Población simulada de 5.000 jóvenes de 18 a 25 años en programas de reinserción. Variable: <b>apoyo social percibido (0–100)</b>.</p>
+      <div class="control"><label for="m_n">Tamaño de cada muestra (n) <output id="m_n_v"></output></label>
+        <input type="range" id="m_n" min="10" max="400" step="10" value="100"></div>
+      <button class="btn" id="m_una">Extraer 1 muestra</button>
+      <button class="btn contorno" id="m_cien">Extraer 100 muestras</button>
+      <button class="btn enlace" id="m_reset">Reiniciar</button>
+      <label class="check"><input type="checkbox" id="m_mu" checked> Mostrar la media real de la población (μ)</label>
+      <div class="caja reto"><b>Prueba esto:</b> extrae 100 muestras con n = 20. Después cambia a n = 400 y repite. ¿Qué le pasa a la nube de medias de la derecha?</div>
+    </aside>
+    <div class="principal">
+      <div class="caja clave"><b>Idea clave.</b> La media de la población (<em>parámetro</em>, μ) es fija pero desconocida. Cada muestra da una media algo distinta (<em>estadístico</em>): es la <b>variabilidad muestral</b>. La dispersión de esas medias se llama <b>error típico</b> y se hace más pequeña cuanto mayor es n.</div>
+      <div class="fila-cifras" id="m_cifras"></div>
+      <div class="rejilla c2">
+        <div class="tarjeta"><h4>Tu última muestra</h4><div class="cuerpo" id="m_g1"></div></div>
+        <div class="tarjeta"><h4>Las medias de todas tus muestras</h4><div class="cuerpo" id="m_g2"></div></div>
+      </div>
+      <div id="m_mensaje"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ 2 INTERVALOS -->
+<section class="pestana" id="tab-intervalos">
+<div class="paso-mod" data-paso="explora">
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="ic">
+      <button data-sub="ic-calc" class="activo">Calcula un IC</button>
+      <button data-sub="ic-cien">100 intervalos</button>
+      <button data-sub="ic-prec">Tamaño muestral y precisión</button>
+    </div>
+
+    <div class="subpestana activa" id="ic-calc">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <div class="control"><label for="ic_media">Media de la muestra</label><input type="number" id="ic_media" value="58" step="any"></div>
+          <div class="control"><label for="ic_dt">Desviación típica (DT)</label><input type="number" id="ic_dt" value="20" min="0.1" step="any"></div>
+          <div class="control"><label for="ic_n">Tamaño de la muestra (n)</label><input type="number" id="ic_n" value="100" min="2" step="1"></div>
+          <div class="control"><span class="etiqueta">Nivel de confianza (1 − α)</span>
+            <div class="radios" data-radio="ic_conf">
+              <label><input type="radio" name="ic_conf" value="0.90"> 90 %</label>
+              <label><input type="radio" name="ic_conf" value="0.95" checked> 95 %</label>
+              <label><input type="radio" name="ic_conf" value="0.99"> 99 %</label>
+              <label><input type="radio" name="ic_conf" value="0.999"> 99,9 %</label>
+            </div></div>
+          <label class="check"><input type="checkbox" id="ic_t"> Usar la t de Student en lugar de z</label>
+          <hr>
+          <b>Ejemplos de las diapositivas</b>
+          <button class="enlace-ej" data-ic="58,20,100">Apoyo social (n = 100; M = 58; DT = 20)</button>
+          <button class="enlace-ej" data-ic="60,20,25">Satisfacción laboral, muestra pequeña (n = 25)</button>
+          <button class="enlace-ej" data-ic="60,20,400">Satisfacción laboral, muestra grande (n = 400)</button>
+          <div class="caja reto"><b>Prueba esto:</b> cambia de 95 % a 99 %. ¿Qué pasa con el valor crítico y con la anchura del intervalo?</div>
+        </aside>
+        <div class="principal">
+          <div id="ic_resultado"></div>
+          <div class="rejilla c2">
+            <div class="tarjeta"><h4>¿De dónde sale el 1,96? El valor crítico</h4><div class="cuerpo"><div id="ic_g1"></div><p class="small" id="ic_g1_txt"></p></div></div>
+            <div class="tarjeta"><h4>Mismos datos, distintos niveles de confianza</h4><div class="cuerpo"><div id="ic_g2"></div><p class="small">Más confianza → intervalo más amplio → estimación menos precisa (con los mismos datos).</p></div></div>
+          </div>
+          <div class="rejilla c2">
+            <div class="caja clave"><b>Interpretación correcta.</b> Si repitiéramos el muestreo muchas veces y calculáramos un intervalo en cada ocasión, aproximadamente el 95 % de esos intervalos contendría la verdadera media de la población. El 95 % se refiere al <b>procedimiento</b>.</div>
+            <div class="caja alerta"><b>Interpretación incorrecta.</b> «Hay un 95 % de probabilidad de que μ esté dentro de este intervalo concreto». La media poblacional es fija: lo que cambia de una muestra a otra son los límites del intervalo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subpestana" id="ic-cien">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Repetimos el mismo estudio muchas veces. En esta simulación sabemos que la media real es <b>μ = 60</b> (en la vida real, nadie la conoce).</p>
+          <div class="control"><label for="ci_n">Tamaño de cada muestra (n) <output id="ci_n_v"></output></label>
+            <input type="range" id="ci_n" min="30" max="400" step="10" value="100"></div>
+          <div class="control"><span class="etiqueta">Nivel de confianza</span>
+            <div class="radios" data-radio="ci_conf">
+              <label><input type="radio" name="ci_conf" value="0.90"> 90 %</label>
+              <label><input type="radio" name="ci_conf" value="0.95" checked> 95 %</label>
+              <label><input type="radio" name="ci_conf" value="0.99"> 99 %</label>
+            </div></div>
+          <button class="btn" id="ci_go">Repetir 100 estudios</button>
+          <button class="btn enlace" id="ci_reset">Reiniciar el recuento</button>
+          <label class="check"><input type="checkbox" id="ci_ocultar"> Ocultar μ (como en la vida real)</label>
+          <div class="caja reto"><b>Prueba esto:</b> pulsa varias veces «Repetir 100 estudios» y mira el porcentaje acumulado. Después cambia a 99 %: ¿qué pasa con la anchura y con los fallos?</div>
+        </aside>
+        <div class="principal">
+          <div class="fila-cifras" id="ci_cifras"></div>
+          <div class="tarjeta"><div class="cuerpo" id="ci_g"></div></div>
+          <div class="caja clave"><b>La analogía del aro.</b> Lanzar un intervalo es como lanzar un aro a una estaca que no vemos. Con un 95 % de confianza, nuestra técnica acierta en 95 de cada 100 lanzamientos. Pero de un lanzamiento concreto (nuestro estudio) no sabemos si es de los que aciertan. Marca «Ocultar μ» para verlo como lo ve un investigador.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subpestana" id="ic-prec">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Una empresa mide la <b>satisfacción laboral (0–100)</b>. Las dos muestras tienen <b>media = 60 y DT = 20</b>.</p>
+          <div class="control"><label for="pr_n1">Muestra A: n <output id="pr_n1_v"></output></label><input type="range" id="pr_n1" min="10" max="1000" step="5" value="25"></div>
+          <div class="control"><label for="pr_n2">Muestra B: n <output id="pr_n2_v"></output></label><input type="range" id="pr_n2" min="10" max="1000" step="5" value="400"></div>
+          <div class="control"><span class="etiqueta">Nivel de confianza</span>
+            <div class="radios" data-radio="pr_conf">
+              <label><input type="radio" name="pr_conf" value="0.90"> 90 %</label>
+              <label><input type="radio" name="pr_conf" value="0.95" checked> 95 %</label>
+              <label><input type="radio" name="pr_conf" value="0.99"> 99 %</label>
+            </div></div>
+          <div class="caja reto"><b>Prueba esto:</b> busca qué n necesitas para que el margen de error sea de ±2 puntos. ¿Y para ±1? ¿Cuántas veces más participantes hacen falta?</div>
+        </aside>
+        <div class="principal">
+          <div class="tarjeta"><h4>Dos muestras con la misma media: ¿cuál estima con más precisión?</h4><div class="cuerpo" id="pr_g1"></div></div>
+          <div class="tarjeta" style="margin-top:14px"><h4>Margen de error según el tamaño de la muestra</h4><div class="cuerpo" id="pr_g2"></div></div>
+          <div class="caja clave"><b>Idea clave.</b> Con más participantes el error típico (DT / √n) es menor y el intervalo, más estrecho. Como depende de la <b>raíz</b> de n, para reducir el margen de error a la mitad hace falta <b>cuatro veces</b> más participantes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ 3 JUICIO -->
+<section class="pestana" id="tab-juicio">
+<div class="paso-mod" data-paso="explora">
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="ju">
+      <button data-sub="ju-anal" class="activo">La analogía</button>
+      <button data-sub="ju-juicio">Celebra un juicio</button>
+      <button data-sub="ju-mil">Mil juicios</button>
+    </div>
+
+    <div class="subpestana activa" id="ju-anal">
+      <div class="principal contenedor">
+        <div class="caja clave"><b>El contraste de hipótesis funciona como un juicio.</b> No podemos «ver» la población (lo que realmente pasó), solo las pruebas que aporta la muestra. Con ellas tenemos que decidir, sabiendo que podemos equivocarnos.</div>
+        <div class="tabla-scroll">
+        <table class="analogia">
+          <tr><th>⚖️ En un juicio</th><th>📊 En el contraste de hipótesis</th></tr>
+          <tr><td><b>Presunción de inocencia:</b> el acusado es inocente mientras no se demuestre lo contrario.</td><td><b>H₀ (hipótesis nula):</b> no hay diferencia o relación en la población. Partimos de suponer que es cierta.</td></tr>
+          <tr><td><b>La acusación</b> sostiene que es culpable.</td><td><b>H₁ (hipótesis alternativa):</b> sí hay diferencia o relación. Normalmente es nuestra hipótesis de investigación.</td></tr>
+          <tr><td><b>Las pruebas</b> que se presentan en el juicio.</td><td><b>Los datos de la muestra</b>, resumidos en un estadístico (t, χ², r…).</td></tr>
+          <tr><td>Antes del juicio se fija qué es estar <b>«más allá de toda duda razonable»</b>.</td><td>Antes del análisis fijamos <b>α</b> (normalmente ,05): el riesgo de condenar a un inocente que estamos dispuestos a asumir. Su complemento, <b>1 − α</b>, es el nivel de confianza (95 %).</td></tr>
+          <tr><td>¿Qué probabilidad habría de reunir pruebas tan incriminatorias <b>si el acusado fuera inocente</b>?</td><td><b>El valor p:</b> probabilidad de obtener un resultado tan extremo como el observado, o más, <b>si H₀ fuera cierta</b>.</td></tr>
+          <tr><td>Veredicto: <b>culpable</b>.</td><td><b>p ≤ α</b> → rechazamos H₀. Resultado estadísticamente significativo: evidencia a favor de H₁.</td></tr>
+          <tr><td>Veredicto: <b>no culpable</b> (por falta de pruebas).</td><td><b>p &gt; α</b> → no rechazamos H₀. <b>No demuestra que H₀ sea cierta</b>: solo que no hay pruebas suficientes.</td></tr>
+        </table>
+        </div>
+        <h4 class="seccion" style="font-size:1.1rem">Los dos errores posibles</h4>
+        <div class="tabla-scroll">
+        <table class="t-ufv">
+          <tr><th></th><th>Realidad: inocente (H₀ verdadera)</th><th>Realidad: culpable (H₀ falsa)</th></tr>
+          <tr><td class="fila">Veredicto: culpable (rechazo H₀)</td><td class="mas">Error tipo I<br><small>condenar a un inocente · probabilidad = α</small></td><td>Acierto<br><small>potencia = 1 − β</small></td></tr>
+          <tr><td class="fila">Veredicto: no culpable (no rechazo H₀)</td><td>Acierto<br><small>probabilidad = 1 − α</small></td><td class="menos">Error tipo II<br><small>absolver a un culpable · probabilidad = β</small></td></tr>
+        </table>
+        </div>
+        <div class="rejilla c2">
+          <div class="caja alerta"><b>Un jurado nunca declara «inocente».</b> Declara «no culpable». Del mismo modo, en estadística nunca «aceptamos» ni «demostramos» H₀: como mucho, <b>no la rechazamos</b>.</div>
+          <div class="caja alerta"><b>El valor p NO es</b> la probabilidad de que H₀ sea cierta, ni la probabilidad de que el resultado se deba al azar. Es la probabilidad de unos datos así <em>suponiendo</em> que H₀ es cierta.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subpestana" id="ju-juicio">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small"><b>Caso:</b> ¿Existen diferencias en autoestima (0–10) entre chicas y chicos adolescentes? (datos simulados)</p>
+          <div class="control"><label for="j_dif">Realidad oculta: diferencia real chicas − chicos <output id="j_dif_v"></output></label>
+            <input type="range" id="j_dif" min="0" max="1.5" step="0.05" value="0.5">
+            <div class="ayuda">Si la diferencia real es 0, el acusado es inocente (H₀ es verdadera).</div></div>
+          <div class="control"><label for="j_n">Participantes por grupo <output id="j_n_v"></output></label>
+            <input type="range" id="j_n" min="10" max="300" step="5" value="50"></div>
+          <div class="control"><span class="etiqueta">Nivel de significación α (duda razonable)</span>
+            <div class="radios" data-radio="j_alpha">
+              <label><input type="radio" name="j_alpha" value="0.10"> ,10</label>
+              <label><input type="radio" name="j_alpha" value="0.05" checked> ,05</label>
+              <label><input type="radio" name="j_alpha" value="0.01"> ,01</label>
+              <label><input type="radio" name="j_alpha" value="0.001"> ,001</label>
+            </div></div>
+          <button class="btn rojo" id="j_go">⚖️ Celebrar un nuevo juicio</button>
+          <label class="check"><input type="checkbox" id="j_revelar"> Revelar la realidad después del veredicto</label>
+          <div class="caja reto"><b>Prueba esto:</b> 1) pon la diferencia real en 0 y celebra 20 juicios: ¿cuántas veces condenas a un inocente? 2) Con diferencia 0,5, compara n = 20 y n = 200. 3) Cambia α a ,001: ¿eres más o menos exigente?</div>
+        </aside>
+        <div class="principal">
+          <div class="rejilla c4" id="j_pasos"></div>
+          <div id="j_veredicto"></div>
+          <div class="rejilla c75">
+            <div class="tarjeta"><h4>¿Serían sorprendentes estas pruebas si el acusado fuera inocente?</h4><div class="cuerpo"><div id="j_g1"></div><p class="small" id="j_g1_txt"></p></div></div>
+            <div class="tarjeta"><h4>Las pruebas: los datos de la muestra</h4><div class="cuerpo" id="j_g2"></div></div>
+          </div>
+          <div class="tarjeta"><h4>Dos caras de la misma moneda: el intervalo de confianza de la diferencia</h4><div class="cuerpo"><div id="j_g3"></div><p id="j_ic_txt"></p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subpestana" id="ju-mil">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Celebramos 1.000 juicios iguales (1.000 estudios con muestras distintas) y contamos los veredictos.</p>
+          <div class="control"><label for="mj_dif">Diferencia real en la población <output id="mj_dif_v"></output></label>
+            <input type="range" id="mj_dif" min="0" max="1.5" step="0.05" value="0"></div>
+          <div class="control"><label for="mj_n">Participantes por grupo <output id="mj_n_v"></output></label>
+            <input type="range" id="mj_n" min="10" max="300" step="5" value="50"></div>
+          <div class="control"><span class="etiqueta">α</span>
+            <div class="radios" data-radio="mj_alpha">
+              <label><input type="radio" name="mj_alpha" value="0.10"> ,10</label>
+              <label><input type="radio" name="mj_alpha" value="0.05" checked> ,05</label>
+              <label><input type="radio" name="mj_alpha" value="0.01"> ,01</label>
+              <label><input type="radio" name="mj_alpha" value="0.001"> ,001</label>
+            </div></div>
+          <button class="btn rojo" id="mj_go">Celebrar 1.000 juicios</button>
+          <div class="caja reto"><b>Prueba esto:</b> 1) Con diferencia 0, cambia α y observa el porcentaje de inocentes condenados. 2) Con diferencia 0,3, sube n de 20 a 300: ¿qué le pasa al error tipo II?</div>
+        </aside>
+        <div class="principal">
+          <div class="fila-cifras" id="mj_cifras"></div>
+          <div class="tarjeta"><h4>Cada cuadrado es un juicio</h4><div class="cuerpo" id="mj_g"></div></div>
+          <div id="mj_mensaje"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ 4 SUPUESTOS -->
+<section class="pestana" id="tab-supuestos">
+<div class="paso-mod" data-paso="explora">
+  <div class="caja alerta"><b>¡Atención: aquí la lógica se invierte!</b> En la comprobación de supuestos, H₀ dice que la condición <b>se cumple</b> (los datos son normales / las varianzas son iguales). Por eso aquí el resultado deseable es <b>p &gt; ,05</b>: no encontrar pruebas de que el supuesto se incumpla. Piensa en la ITV: el coche se presume en buen estado (H₀) y esperamos que pase la inspección.</div>
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="su">
+      <button data-sub="su-norm" class="activo">Normalidad</button>
+      <button data-sub="su-homo">Homocedasticidad</button>
+    </div>
+    <div class="subpestana activa" id="su-norm">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Variable: <b>autoestima</b> (puntuación cuantitativa). Elige cómo es la población de la que sacamos la muestra.</p>
+          <div class="control"><span class="etiqueta">Forma de la población</span>
+            <div class="radios vertical" data-radio="n_forma">
+              <label><input type="radio" name="n_forma" value="normal" checked> Normal</label>
+              <label><input type="radio" name="n_forma" value="asimpos"> Asimétrica positiva</label>
+              <label><input type="radio" name="n_forma" value="asimneg"> Asimétrica negativa</label>
+              <label><input type="radio" name="n_forma" value="atipicos"> Normal con valores atípicos</label>
+              <label><input type="radio" name="n_forma" value="unif"> Plana (uniforme)</label>
+            </div></div>
+          <div class="control"><label for="n_n">Tamaño de la muestra (n) <output id="n_n_v"></output></label>
+            <input type="range" id="n_n" min="10" max="300" step="5" value="60"></div>
+          <button class="btn" id="n_go">Nueva muestra</button>
+          <div class="caja clave small"><b>Criterio de clase:</b> n &lt; 50 → Shapiro-Wilk; n ≥ 50 → Kolmogorov-Smirnov (corrección de Lilliefors). Es una pauta didáctica, no una regla universal: Shapiro-Wilk suele tener más potencia.</div>
+          <div class="caja reto"><b>Prueba esto:</b> con la forma asimétrica, compara n = 15 y n = 200 varias veces. ¿La prueba detecta siempre la falta de normalidad? ¿Y con la forma normal y n = 300?</div>
+        </aside>
+        <div class="principal">
+          <div id="n_resultado"></div>
+          <div class="rejilla c2">
+            <div class="tarjeta"><h4>Histograma y curva normal de referencia</h4><div class="cuerpo" id="n_g1"></div></div>
+            <div class="tarjeta"><h4>Gráfico Q-Q: si es normal, los puntos siguen la recta</h4><div class="cuerpo" id="n_g2"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="su-homo">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small"><b>Caso:</b> comparamos la ansiedad de estudiantes de Psicología y de Criminología. Antes de la t de Student comprobamos si las varianzas son iguales (prueba de Levene).</p>
+          <div class="control"><label for="h_ratio">Razón de DT (Criminología / Psicología) <output id="h_ratio_v"></output></label>
+            <input type="range" id="h_ratio" min="0.5" max="3" step="0.1" value="1">
+            <div class="ayuda">¿Cuántas veces más dispersa es Criminología que Psicología?</div></div>
+          <div class="control"><label for="h_n1">n Psicología <output id="h_n1_v"></output></label><input type="range" id="h_n1" min="10" max="200" step="5" value="40"></div>
+          <div class="control"><label for="h_n2">n Criminología <output id="h_n2_v"></output></label><input type="range" id="h_n2" min="10" max="200" step="5" value="35"></div>
+          <button class="btn" id="h_go">Nueva muestra</button>
+          <div class="caja reto"><b>Prueba esto:</b> con razón 1, ¿sale siempre p &gt; ,05? Sube la razón poco a poco: ¿a partir de cuándo Levene detecta la diferencia con n = 40? ¿Y con n = 200?</div>
+        </aside>
+        <div class="principal">
+          <div id="h_resultado"></div>
+          <div class="tarjeta"><h4>Distribución de la ansiedad en cada grupo</h4><div class="cuerpo" id="h_g"></div></div>
+          <div class="caja clave"><b>Ojo:</b> homocedasticidad significa <b>variabilidad parecida</b>, no medias parecidas. En esta simulación las medias son distintas a propósito: Levene solo mira la dispersión.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ 5 ESQUEMA -->
+<section class="pestana" id="tab-esquema">
+<div class="paso-mod" data-paso="explora">
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="es">
+      <button data-sub="es-guia" class="activo">Esquema guiado (1.º curso)</button>
+      <button data-sub="es-casos">Casos rápidos</button>
+    </div>
+    <div class="subpestana activa" id="es-guia">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <div class="control"><span class="etiqueta">1. ¿Qué tienes y qué quieres hacer?</span>
+            <div class="radios vertical" data-radio="w_tipo">
+              <label><input type="radio" name="w_tipo" value="cat" checked> Dos variables categóricas: ¿están asociadas?</label>
+              <label><input type="radio" name="w_tipo" value="rel"> Dos variables cuantitativas: quiero RELACIONARLAS</label>
+              <label><input type="radio" name="w_tipo" value="comp"> Una variable cuantitativa en dos grupos o dos momentos: quiero COMPARAR</label>
+            </div></div>
+          <div id="w_bloque_rel" class="oculto">
+            <label class="check control"><input type="checkbox" id="w_ordinal"> Al menos una de las variables es ordinal</label>
+            <div class="control" id="w_bloque_normrel"><span class="etiqueta">2. ¿Se cumple la normalidad? (p &gt; ,05)</span>
+              <div class="radios" data-radio="w_norm_rel">
+                <label><input type="radio" name="w_norm_rel" value="si" checked> Sí</label>
+                <label><input type="radio" name="w_norm_rel" value="no"> No</label>
+              </div></div>
+          </div>
+          <div id="w_bloque_comp" class="oculto">
+            <div class="control"><span class="etiqueta">2. ¿Cómo son las muestras?</span>
+              <div class="radios vertical" data-radio="w_muestras">
+                <label><input type="radio" name="w_muestras" value="ind" checked> Independientes (personas distintas en cada grupo)</label>
+                <label><input type="radio" name="w_muestras" value="rel"> Relacionadas (las mismas personas medidas dos veces)</label>
+              </div></div>
+            <div class="control"><span class="etiqueta">3. ¿Se cumple la normalidad? (p &gt; ,05)</span>
+              <div class="radios" data-radio="w_norm_comp">
+                <label><input type="radio" name="w_norm_comp" value="si" checked> Sí</label>
+                <label><input type="radio" name="w_norm_comp" value="no"> No</label>
+              </div></div>
+            <div class="control" id="w_bloque_lev"><span class="etiqueta">4. ¿Se cumple la homocedasticidad? (Levene: p &gt; ,05)</span>
+              <div class="radios" data-radio="w_lev">
+                <label><input type="radio" name="w_lev" value="si" checked> Sí</label>
+                <label><input type="radio" name="w_lev" value="no"> No</label>
+              </div></div>
+          </div>
+        </aside>
+        <div class="principal">
+          <h4 class="seccion" style="margin-top:0;font-size:1.15rem">Tu camino por el esquema</h4>
+          <div id="w_camino"></div>
+          <div id="w_prueba"></div>
+          <div class="caja clave"><b>La secuencia de trabajo en todas las actividades:</b> 1) <b>¿Por qué esta prueba?</b> (justificación: tipo de variables, objetivo y supuestos) → 2) <b>¿Qué resultados obtengo?</b> → 3) <b>¿Qué puedo concluir?</b></div>
+          <p class="small gris">Fuente del esquema: adaptación de Pardo et al. (2009) y Pardo y San Martín (2010), según las diapositivas del tema.</p>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="es-casos">
+      <div class="principal contenedor">
+        <div id="caso_txt"></div>
+        <div class="rejilla" style="grid-template-columns:2fr 1fr 1fr;align-items:end">
+          <div class="control" style="margin:0"><label for="caso_resp">¿Qué prueba utilizarías?</label><select id="caso_resp"></select></div>
+          <button class="btn" id="caso_comprobar" style="margin:0">✓ Comprobar</button>
+          <button class="btn contorno" id="caso_sig" style="margin:0">Siguiente caso ⏭</button>
+        </div>
+        <div id="caso_fb"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ 6 CHI -->
+<section class="pestana" id="tab-chi">
+<div class="paso-mod" data-paso="explora">
+  <div class="con-lateral">
+    <aside class="lateral">
+      <p class="small" id="x_caso"></p>
+      <div class="control"><label for="x_ejemplo">Ejemplo o actividad de clase</label><select id="x_ejemplo"></select></div>
+      <div class="control"><span class="etiqueta">Tamaño de la tabla</span>
+        <div class="radios"><label>Filas <select id="x_f" style="width:auto"><option>2</option><option>3</option></select></label>
+        <label>Columnas <select id="x_c" style="width:auto"><option>2</option><option>3</option></select></label></div></div>
+      <b>Frecuencias observadas</b> <span class="small gris">(puedes cambiar también los nombres)</span>
+      <div class="tabla-scroll"><table class="tabla-input" id="x_rejilla"></table></div>
+      <div class="control"><span class="etiqueta">Nivel de significación α</span>
+        <div class="radios" data-radio="x_alpha">
+          <label><input type="radio" name="x_alpha" value="0.05" checked> ,05</label>
+          <label><input type="radio" name="x_alpha" value="0.01"> ,01</label>
+          <label><input type="radio" name="x_alpha" value="0.001"> ,001</label>
+        </div></div>
+<div class="caja reto"><b>Prueba esto:</b> en el ejemplo de ciberacoso, baja poco a poco el 40 de Instagram–Sí (y sube el 60). ¿En qué momento deja de ser significativo? ¿Qué pasa con los residuos?</div>
+    </aside>
+    <div class="principal">
+      <div class="fila-cifras" id="x_cifras"></div>
+      <div class="rejilla c3">
+        <div class="tarjeta"><h4>1 · Frecuencias observadas</h4><div class="cuerpo" id="x_obs"></div></div>
+        <div class="tarjeta"><h4>2 · Esperadas si fueran independientes</h4><div class="cuerpo" id="x_esp"></div></div>
+        <div class="tarjeta"><h4>3 · Residuos estandarizados corregidos (Z)</h4><div class="cuerpo" id="x_res"></div></div>
+      </div>
+      <div class="rejilla c2">
+        <div class="tarjeta"><h4>Reparto de cada fila comparado con el total</h4><div class="cuerpo" id="x_g1"></div></div>
+        <div class="tarjeta"><h4>¿Sería sorprendente este χ² si fueran independientes?</h4><div class="cuerpo" id="x_g2"></div></div>
+      </div>
+      <div class="tarjeta"><h4>Redacta el resultado en 3 pasos</h4><div class="cuerpo"><div class="rejilla c3" id="x_informe" style="margin:0"></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ 7 CORRELACIONES -->
+<section class="pestana" id="tab-correlaciones">
+<div class="paso-mod" data-paso="explora">
+  <div class="con-lateral">
+    <aside class="lateral">
+      <p class="small"><b>Caso:</b> relación entre las horas de estudio semanales y la nota del examen (datos simulados).</p>
+      <div class="control"><label for="c_r">Relación real en la población <output id="c_r_v"></output></label>
+        <input type="range" id="c_r" min="-1" max="1" step="0.05" value="0.5"></div>
+      <div class="control"><label for="c_n">Tamaño de la muestra (n) <output id="c_n_v"></output></label>
+        <input type="range" id="c_n" min="5" max="500" step="1" value="50"></div>
+      <div class="control"><span class="etiqueta">Forma de la relación</span>
+        <div class="radios vertical" data-radio="c_forma">
+          <label><input type="radio" name="c_forma" value="lin" checked> Lineal</label>
+          <label><input type="radio" name="c_forma" value="curva"> Monótona pero curva</label>
+          <label><input type="radio" name="c_forma" value="atip"> Lineal con un valor atípico</label>
+        </div></div>
+      <button class="btn" id="c_go">Nueva muestra</button>
+      <hr>
+      <b>Retos rápidos</b>
+      <button class="enlace-ej" data-cor="0.15,500">Débil pero significativa (r = ,15; n = 500)</button>
+      <button class="enlace-ej" data-cor="0.5,8">Fuerte pero no significativa (r = ,50; n = 8)</button>
+      <button class="enlace-ej" data-cor="0,50">Sin relación (r = 0; n = 50)</button>
+      <button class="enlace-ej" data-cor="-0.65,60">Inversa (r = −,65; n = 60)</button>
+    </aside>
+    <div class="principal">
+      <div class="fila-cifras" id="c_cifras"></div>
+      <div class="rejilla c75">
+        <div class="tarjeta"><h4>Diagrama de dispersión</h4><div class="cuerpo" id="c_g1"></div></div>
+        <div class="tarjeta"><h4>Interpretación</h4><div class="cuerpo"><div id="c_g2"></div><div id="c_interp"></div></div></div>
+      </div>
+      <div class="caja clave"><b>Tres preguntas distintas:</b> <b>dirección</b> (signo: positiva o inversa), <b>intensidad</b> (|r| de 0 a 1) y <b>significación</b> (p ≤ α). Una correlación significativa no tiene por qué ser fuerte, y <b>correlación no implica causalidad</b>.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- ================================================================ 8 GRUPOS INDEPENDIENTES -->
+<section class="pestana" id="tab-independientes">
+<div class="paso-mod" data-paso="explora">
+  <div class="con-lateral">
+    <aside class="lateral">
+      <div class="control"><label for="ti_caso">Caso</label><select id="ti_caso">
+        <option value="autoestima">Autoestima de chicas y chicos</option>
+        <option value="empatia">Empatía y voluntariado</option>
+        <option value="ansiedad">Ansiedad en Psicología y Criminología</option>
+      </select></div>
+      <p class="small" id="ti_desc"></p>
+      <div class="control"><label for="ti_d">Diferencia real entre grupos (d) <output id="ti_d_v"></output></label>
+        <input type="range" id="ti_d" min="0" max="1.5" step="0.05" value="0.6">
+        <div class="ayuda">En unidades de desviación típica. Con 0, no hay diferencias en la población (H₀ verdadera).</div></div>
+      <div class="control"><label for="ti_n1">n del grupo 1 <output id="ti_n1_v"></output></label><input type="range" id="ti_n1" min="8" max="150" step="1" value="50"></div>
+      <div class="control"><label for="ti_n2">n del grupo 2 <output id="ti_n2_v"></output></label><input type="range" id="ti_n2" min="8" max="150" step="1" value="50"></div>
+      <div class="control"><label for="ti_ratio">Dispersión del grupo 2 (× DT del grupo 1) <output id="ti_ratio_v"></output></label><input type="range" id="ti_ratio" min="0.5" max="3" step="0.1" value="1"></div>
+      <div class="control"><span class="etiqueta">Forma de las puntuaciones</span>
+        <div class="radios" data-radio="ti_forma">
+          <label><input type="radio" name="ti_forma" value="normal" checked> Normal</label>
+          <label><input type="radio" name="ti_forma" value="asim"> Asimétrica</label>
+        </div></div>
+      <button class="btn" id="ti_go">Nueva muestra</button>
+      <div class="caja reto"><b>Prueba esto:</b> 1) Pon la forma asimétrica con grupos pequeños: ¿qué prueba indica el esquema? 2) Sube la dispersión del grupo 2 a 2,5: ¿qué dice Levene? 3) Con d = 0, pulsa «Nueva muestra» varias veces: ¿cuántas veces sale significativo?</div>
+    </aside>
+    <div class="principal">
+      <div id="ti_camino"></div>
+      <div class="rejilla c2">
+        <div class="tarjeta"><h4>Los datos de cada grupo</h4><div class="cuerpo" id="ti_g"></div></div>
+        <div class="tarjeta"><h4>Paso 1 · Comprobación de supuestos</h4><div class="cuerpo" id="ti_sup"></div></div>
+      </div>
+      <div class="tarjeta"><h4>Paso 2 · Resultados de las dos pruebas</h4><div class="cuerpo"><div class="rejilla c2" id="ti_res" style="margin:0"></div></div></div>
+      <div class="tarjeta" style="margin-top:14px"><h4>Redacta el resultado en 3 pasos</h4><div class="cuerpo"><div class="rejilla c3" id="ti_informe" style="margin:0"></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ 9 MUESTRAS RELACIONADAS -->
+<section class="pestana" id="tab-relacionadas">
+<div class="paso-mod" data-paso="explora">
+  <div class="con-lateral">
+    <aside class="lateral">
+      <div class="control"><label for="tr_caso">Caso</label><select id="tr_caso">
+        <option value="mindfulness">Ansiedad antes y después de un programa de mindfulness</option>
+        <option value="taller">Autoestima antes y después de un taller</option>
+      </select></div>
+      <p class="small" id="tr_desc"></p>
+      <div class="control"><label for="tr_d">Cambio real medio (d) <output id="tr_d_v"></output></label>
+        <input type="range" id="tr_d" min="-1.5" max="1.5" step="0.05" value="-0.5">
+        <div class="ayuda">Tamaño del cambio en unidades de desviación típica de las diferencias. Con 0, no hay cambio en la población.</div></div>
+      <div class="control"><label for="tr_n">Número de personas <output id="tr_n_v"></output></label><input type="range" id="tr_n" min="6" max="120" step="1" value="30"></div>
+      <div class="control"><span class="etiqueta">Forma de las diferencias</span>
+        <div class="radios vertical" data-radio="tr_forma">
+          <label><input type="radio" name="tr_forma" value="normal" checked> Normal</label>
+          <label><input type="radio" name="tr_forma" value="asim"> Asimétrica</label>
+          <label><input type="radio" name="tr_forma" value="atip"> Con dos valores atípicos</label>
+        </div></div>
+      <button class="btn" id="tr_go">Nueva muestra</button>
+      <div class="caja reto"><b>Prueba esto:</b> 1) Elige «Con dos valores atípicos»: ¿cambia la prueba que toca? ¿Coinciden t y Wilcoxon? 2) Pon un cambio pequeño (d = 0,2) y compara n = 15 y n = 100.</div>
+    </aside>
+    <div class="principal">
+      <div id="tr_camino"></div>
+      <div class="rejilla c2">
+        <div class="tarjeta"><h4>Cada línea es una persona</h4><div class="cuerpo" id="tr_g1"></div></div>
+        <div class="tarjeta"><h4>Paso 1 · Normalidad de las diferencias</h4><div class="cuerpo"><div id="tr_g2"></div><div id="tr_sup"></div></div></div>
+      </div>
+      <div class="tarjeta"><h4>Paso 2 · Resultados de las dos pruebas</h4><div class="cuerpo"><div class="rejilla c2" id="tr_res" style="margin:0"></div></div></div>
+      <div class="tarjeta" style="margin-top:14px"><h4>Redacta el resultado en 3 pasos</h4><div class="cuerpo"><div class="rejilla c3" id="tr_informe" style="margin:0"></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ REPASO -->
+<section class="pestana" id="tab-repaso"></section>
+
+<!-- ================================================================ CUADERNO -->
+<section class="pestana" id="tab-cuaderno"><div id="cuaderno" class="cuaderno"></div></section>
+
+</main>
+
+<div id="entrada" class="entrada oculto"></div>
+
+<footer class="pie-ufv">
+  <div class="pie-txt">
+    <b>Facultad de Psicología y Educación</b>
+    <span>Grado en Psicología · Fundamentos de Investigación en Psicología</span>
+    <span>Faro estadístico · Tema 4 · Análisis inferencial de los datos · Curso 2026/27</span>
+    <span class="pie-nota">Recurso docente con datos simulados</span>
+  </div>
+  <img src="img/Logo_ufv_blanco.png" alt="Universidad Francisco de Vitoria">
+</footer>
+
+<script src="js/estadistica.js"></script>
+<script src="js/graficos.js"></script>
+<script src="js/contenido.js"></script>
+<script src="js/app.js"></script>
+<script src="js/tutor.js"></script>
+</body>
+</html>
