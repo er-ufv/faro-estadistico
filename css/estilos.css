@@ -492,3 +492,26 @@ h1, h2, h3, .titulo-mod, .cuaderno-cab h2, h4.seccion, h3.seccion-c, .marca-nomb
 .btn.gem { background:#f3f0ff; color:#5a35b8; border:1.5px solid #7b4fd6; }
 .btn.gem:hover { background:#7b4fd6; color:#fff; }
 @media (max-width: 700px) { .gem-tarjeta { flex-direction:column; } }
+
+/* Avatar ilustrado en el acceso principal a Antonio IA */
+.gem-tarjeta .gem-ico {
+  display: block;
+  width: 82px;
+  height: 82px;
+  flex: 0 0 82px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #7b4fd6, 0 4px 12px rgba(0, 56, 101, .12);
+  background: #fff;
+}
+.gem-tarjeta .gem-ico img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 26%;
+}
+@media (max-width: 700px) {
+  .gem-tarjeta .gem-ico { width: 70px; height: 70px; flex-basis: 70px; }
+}

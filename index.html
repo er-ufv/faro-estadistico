@@ -7,6 +7,7 @@
   <meta name="description" content="Faro estadístico: recurso interactivo del Tema 4 (Análisis inferencial de los datos) de Fundamentos de Investigación en Psicología, UFV.">
   <link rel="icon" href="img/faro.svg">
   <link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/antonio-chat.css">
 </head>
 <body>
 
@@ -22,7 +23,7 @@
     <button data-tab="estadisticos">Usar los estadísticos</button>
     <button data-tab="repaso">Repaso</button>
     <button data-tab="cuaderno" class="nav-cuaderno">Mi cuaderno</button>
-    <a id="navGem" class="nav-gem" href="https://gemini.google.com/gem/1D5CJB-Std2_chtal0JgEdr7_7qSznhwU?usp=sharing" target="_blank" rel="noopener" title="Abre el tutor de IA en una pestaña nueva">💬 Antonio IA</a>
+    <a id="navGem" class="nav-gem" href="#antonio-ia" title="Abre Antonio IA dentro de Faro">💬 Antonio IA</a>
   </nav>
   <div id="usuario" class="usuario"></div>
 </header>
@@ -592,6 +593,16 @@
 <script src="js/graficos.js"></script>
 <script src="js/contenido.js"></script>
 <script src="js/app.js"></script>
+<script defer src="js/antonio-config.js"></script>
+<script defer src="js/antonio-chat.js"></script>
 <script src="js/tutor.js"></script>
+<aside id="antonioPanel" class="antonio-panel" aria-hidden="true" aria-label="Panel de conversación con Antonio IA">
+  <header class="antonio-head"><img src="img/antonio-ia.jpg" alt="Ilustración homenaje a Antonio Pardo Merino"><div><strong>Antonio IA</strong><small>Tutor de estadística · Homenaje académico</small></div><button type="button" id="antonioCerrar" aria-label="Cerrar Antonio IA">×</button></header>
+  <div class="antonio-intro">Soy un asistente de IA inspirado en los materiales de la asignatura, no el profesor Antonio Pardo. Te ayudaré a razonar, paso a paso.</div>
+  <div id="antonioContexto" class="antonio-contexto" hidden></div>
+  <div id="antonioMensajes" class="antonio-mensajes" role="log" aria-live="polite"></div>
+  <form id="antonioForm" class="antonio-form"><label for="antonioTexto" class="sr-only">Tu pregunta para Antonio IA</label><textarea id="antonioTexto" placeholder="Escribe tu duda estadística…" rows="2" maxlength="1800" required></textarea><button id="antonioEnviar" type="submit">Enviar</button></form>
+  <footer class="antonio-pie"><button type="button" id="antonioNueva">Nueva conversación</button><span id="antonioEstado">No escribas datos personales.</span></footer>
+</aside><div id="antonioFondo" class="antonio-fondo" hidden></div>
 </body>
 </html>

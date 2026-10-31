@@ -31,7 +31,7 @@
   // Gem de Gemini que hace de tutor socrático (ver gem_tutor_tema4.md).
   // Pega aquí el enlace para compartir del Gem; mientras esté vacío, el botón no aparece.
   // «Antonio IA»: en homenaje a Antonio Pardo Merino, autor de los manuales de análisis de datos de la asignatura.
-  const GEM = { url: "https://gemini.google.com/gem/1D5CJB-Std2_chtal0JgEdr7_7qSznhwU?usp=sharing", nombre: "Antonio IA" };
+  const GEM = { nombre: "Antonio IA", integrado: true };
   const DURACION = { hablando: 3000, celebrando: 2500, sorpresa: 2500, reflexivo: 3000, esperando: 4000 };
 
   // ------------------------------------------------------------------

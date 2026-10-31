@@ -159,7 +159,7 @@
       <div class="conceptos">${conc}</div>
       <p class="enunciado">${e.enunciado}</p>${e.contexto ? `<div class="contexto">${e.contexto}</div>` : ""}
       ${cuerpo}
-      <div class="acciones"><button class="btn peq comprobar">Comprobar</button><button class="btn contorno peq repetir oculto">Repetir</button>${C.GEM && C.GEM.url ? `<button class="btn peq gem" title="Copia el ejercicio y abre ${esc(C.GEM.nombre)} en una pestaña nueva">💬 Pregúntale a ${esc(C.GEM.nombre)}</button>` : ""}</div>
+      <div class="acciones"><button class="btn peq comprobar">Comprobar</button><button class="btn contorno peq repetir oculto">Repetir</button>${C.GEM ? `<button class="btn peq gem" title="Consulta a ${esc(C.GEM.nombre)} dentro de Faro">💬 Pregúntale a ${esc(C.GEM.nombre)}</button>` : ""}</div>
       <div class="feedback" aria-live="polite"></div>`;
     let intento = 0;
     const fb = div.querySelector(".feedback"), estadoEl = div.querySelector(".estado-ej");
@@ -225,11 +225,17 @@
       else if (e.tipo === "completar") mia = e.campos.map((c, i) => `${c.etiqueta}: ${div.querySelectorAll(".completar input")[i].value || "?"}`).join("; ");
       else mia = [...div.querySelectorAll(".fila-emp")].map(f => `${limpio(f.querySelector(".emp-izq").innerHTML)} → ${f.querySelector("select").value || "?"}`).join("; ");
       const setObj = (C.PRACTICA[e.mod] || []).find(x => x.id === e.set), ctx = setObj && setObj.descripcion ? `Contexto: ${limpio(setObj.descripcion)}\n` : "";
-      const texto = `[Herramienta Tema 4] Módulo: ${C.MODULOS[e.mod].titulo} · Ejercicio: ${e.id}\n${ctx}Enunciado: ${limpio(e.enunciado)}\nMi respuesta: ${mia}\nPista que me ha dado la herramienta: ${intento > 0 || registro(e.id) ? e.pista : "(ninguna todavía)"}\nNo entiendo: `;
-      const abrir = () => window.open(C.GEM.url, "_blank", "noopener");
-      const aviso = ok => { fb.insertAdjacentHTML("afterbegin", `<div class="caja clave small">${ok ? `He copiado el ejercicio. Pégalo en el chat de ${C.GEM.nombre} (Ctrl+V o Cmd+V) y escribe qué no entiendes.` : `No he podido copiarlo automáticamente: copia el enunciado a mano en el chat de ${C.GEM.nombre}.`}</div>`); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(texto).then(() => aviso(true), () => aviso(false)).finally(abrir);
-      else { aviso(false); abrir(); }
+      if (window.AntonioIA && window.AntonioIA.abrir) {
+        window.AntonioIA.abrir({
+          faroModule: C.MODULOS[e.mod].titulo,
+          exerciseStatement: [ctx, limpio(e.enunciado)].filter(Boolean).join('\n'),
+          studentAnswer: mia,
+          hintReceived: intento > 0 || registro(e.id) ? e.pista : '(ninguna todavía)',
+          exerciseId: e.id
+        });
+      } else {
+        fb.insertAdjacentHTML('afterbegin','<div class="caja alerta">El tutor todavía no está disponible.</div>');
+      }
     });
     div.querySelector(".repetir").addEventListener("click", () => {
       const p = perfil(); delete p.ej[e.id]; guardar();
@@ -535,7 +541,9 @@
     cont.innerHTML = `<div class="rejilla c2">${tarjeta("fundamentos", "esp-azul")}${tarjeta("estadisticos", "esp-arena")}</div>
       <div class="rejilla c2"><article class="espacio mini" data-ir-esp="repaso" tabindex="0" role="button"><h3>Repaso final</h3><p>Preguntas mezcladas de todo el tema para antes del examen.</p>${barra(rp.h, rp.t)}</article>
       <article class="espacio mini" data-ir-esp="cuaderno" tabindex="0" role="button"><h3>Mi cuaderno</h3><p>Lo que ya dominas y lo que te conviene repasar.</p></article></div>
-      ${C.GEM && C.GEM.url ? `<a class="espacio gem-tarjeta" href="${esc(C.GEM.url)}" target="_blank" rel="noopener"><span class="gem-ico">💬</span><div><span class="eti-espacio">Tutor con IA · Gemini UFV</span><h3>${esc(C.GEM.nombre)}</h3><p>Si te atascas, ${esc(C.GEM.nombre)} te ayuda a razonar con preguntas, sin darte la solución hecha. En cada ejercicio tienes el botón <b>«Pregúntale a ${esc(C.GEM.nombre)}»</b>, que copia el enunciado y tu respuesta para que solo tengas que pegarlo. Entra con tu cuenta de la UFV. Se llama así en homenaje a Antonio Pardo Merino.</p></div><span class="parada-ir">Abrir →</span></a>` : ""}`;
+      ${C.GEM ? `<button type="button" class="espacio gem-tarjeta" id="antonioTarjeta" style="text-align:left;width:100%;cursor:pointer"><span class="gem-ico"><img src="img/antonio-ia.jpg" alt="Ilustración de Antonio IA, homenaje al profesor Antonio Pardo Merino" loading="lazy"></span><div><span class="eti-espacio">Tutor con IA · Gemini UFV</span><h3>${esc(C.GEM.nombre)}</h3><p>Si te atascas, ${esc(C.GEM.nombre)} te ayuda a razonar con preguntas, sin darte la solución hecha. En cada ejercicio tienes el botón <b>«Pregúntale a ${esc(C.GEM.nombre)}»</b>, que comparte el contexto de tu ejercicio automáticamente. Se abre aquí, sin salir de Faro. Es un homenaje a Antonio Pardo Merino.</p></div><span class="parada-ir">Abrir →</span></button>` : ""}`;
+    const antonioTarjeta = cont.querySelector('#antonioTarjeta');
+    if (antonioTarjeta) antonioTarjeta.addEventListener('click', () => window.AntonioIA?.abrir({}));
     cont.querySelectorAll("[data-ir-esp]").forEach(el => {
       const ir = () => App.irA(el.dataset.irEsp);
       el.addEventListener("click", ir); el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ir(); } });
@@ -627,5 +635,5 @@
   if (perfil()) { precargar(docente()); pintarUsuario(); App.arrancar(); }
   else { App.arrancar(); mostrarEntrada(); }
   // Enlace de la cabecera a Antonio IA (toma la URL de contenido.js)
-  (() => { const a = document.getElementById("navGem"); if (!a) return; if (C.GEM && C.GEM.url) { a.href = C.GEM.url; a.textContent = "💬 " + C.GEM.nombre; } else a.remove(); })();
+  (() => { const a = document.getElementById("navGem"); if (!a) return; if (C.GEM) { a.removeAttribute("href"); a.style.cursor = "pointer"; a.textContent = "💬 " + C.GEM.nombre; a.addEventListener("click", (ev) => { ev.preventDefault(); window.AntonioIA?.abrir({}); }); } else a.remove(); })();
 })();
