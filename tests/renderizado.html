@@ -1,0 +1,26 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>Pruebas de renderizado</title>
+<link rel="stylesheet" href="../vendor/katex/katex.min.css">
+<script src="../vendor/marked.umd.js"></script><script src="../vendor/purify.min.js"></script><script src="../vendor/katex/katex.min.js"></script><script src="../js/antonio-render.js"></script>
+<h1>Pruebas de renderizado de Antonio IA</h1><pre id="resultado"></pre><script>
+try {
+   const out=[]; const test=(name,src,check)=>{const d=document.createElement('div');AntonioRender.render(d,src);if(!check(d))throw Error(name+': '+d.innerHTML);out.push(name);};
+   test('Negritas escapadas y ejemplo original',String.raw`La \*\*hipótesis nula ($H_0$)\*\* y $p > ,05$: \*\*no rechazamos $H_0$\*\*.`,d=>d.querySelectorAll('strong').length===2&&d.querySelectorAll('.katex').length===3);
+   test('Markdown: lista, enlace, cursiva', '**Hola**\n\n- *Uno*\n- [Dos](https://example.org)',d=>d.querySelector('strong')&&d.querySelectorAll('li').length===2&&d.querySelector('em')&&d.querySelector('a'));
+   test('Cuatro delimitadores',String.raw`$H_0$ y \(p < .05\)
+
+$$\frac{a}{b}$$
+
+\[\sum_{i=1}^n x_i\]`,d=>d.querySelectorAll('.katex').length===4&&d.querySelectorAll('.katex-display').length===2);
+   test('Código conserva literales','`$H_0$`\n\n```js\n\\*\\*literal\\*\\* $x$\n```',d=>d.querySelectorAll('.katex').length===0&&d.querySelectorAll('code').length===2);
+   test('Tablas','| A | B |\n|---|---|\n| $H_0$ | 2 |',d=>d.querySelector('table')&&d.querySelector('.katex'));
+   test('HTML y enlaces maliciosos','<img src=x onerror="alert(1)"><script>alert(1)</script><svg onload="alert(1)"></svg>[X](javascript:alert%281%29)<iframe srcdoc="x"></iframe>',d=>!d.querySelector('img,script,svg,iframe,[onerror],[onload],a[href]'));
+   test('LaTeX no permite HTML ni enlaces',String.raw`$\href{javascript:alert(1)}{X}$ $\htmlStyle{background:red}{x}$`,d=>!d.querySelector('a[href], [style*="background"]'));
+   test('LaTeX inválido no rompe chat',String.raw`Antes $\frac{a}$ después`,d=>d.textContent.includes('después'));
+   test('Dólar escapado','Precio: \\$5. Sin fórmula.',d=>!d.querySelector('.katex')&&d.textContent.includes('$5'));
+   test('HTML no conserva estilos arbitrarios','<span style="position:fixed" onclick="alert(1)">texto</span>',d=>!d.querySelector('[style],[onclick]'));
+   const original=window.DOMPurify;window.DOMPurify=null;
+   test('Fallo de biblioteca: texto seguro','<img src=x onerror=alert(1)>',d=>!d.querySelector('img')&&d.textContent.includes('<img'));
+   window.DOMPurify=original;
+document.getElementById('resultado').textContent=out.length+' pruebas superadas:\n'+out.join('\n');
+} catch(e) {document.getElementById('resultado').textContent='FALLO: '+e.message;throw e;}
+</script></html>
