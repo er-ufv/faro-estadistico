@@ -54,7 +54,7 @@ El enfoque prioriza la comprensión y el razonamiento sobre la aplicación mecá
    - **Usar los estadísticos:** mapa interactivo del esquema de decisión; cada prueba del mapa abre su módulo.
 4. **Tres pasos por módulo:** **Explicación** (el avatar cuenta la idea clave), **Explora** (simulación interactiva con datos generados al momento) y **Practica** (ejercicios tipo test, emparejar, clasificar y completar datos).
 5. **Retroalimentación.** Cada ejercicio tiene dos intentos y una pista. El avatar reacciona con cinco expresiones: *hablando*, *esperando*, *celebrando* (acierto), *sorpresa* (acierto tras fallo o racha) y *reflexivo* (fallo con pista).
-6. **Mi cuaderno.** Muestra, con el nombre del estudiante, el dominio de 16 conceptos (dominado, repasar, prioritario), sus prioridades con la diapositiva que conviene revisar y el progreso por módulo. Se puede imprimir o guardar en PDF.
+6. **Mi cuaderno.** Muestra, con el nombre del estudiante, el dominio de 16 conceptos (dominado, repasar, prioritario), sus prioridades con el caso y el apartado que conviene revisar y el progreso por módulo. Se puede imprimir o guardar en PDF.
 
 | Esquema de decisión interactivo | Módulo «Explora» |
 |---|---|

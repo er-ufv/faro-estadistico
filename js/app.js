@@ -556,15 +556,15 @@
   // 6 · CHI-CUADRADO (tablas de 2 × 2 a 3 × 3)
   // ==================================================================
   const CHI_EJ = {
-    ciber: { nombre: "Red social y ciberacoso (diap. 5)", varF: "la red social más utilizada", varC: "haber sufrido ciberacoso", filas: ["Instagram", "Otras"], cols: ["Ciberacoso: sí", "Ciberacoso: no"], O: [[40, 60], [20, 80]] },
-    nosig: { nombre: "Red social y ciberacoso, sin asociación (diap. 6)", varF: "la red social más utilizada", varC: "haber sufrido ciberacoso", filas: ["Instagram", "Otras"], cols: ["Ciberacoso: sí", "Ciberacoso: no"], O: [[32, 68], [28, 72]] },
+    ciber: { nombre: "Red social y ciberacoso", varF: "la red social más utilizada", varC: "haber sufrido ciberacoso", filas: ["Instagram", "Otras"], cols: ["Ciberacoso: sí", "Ciberacoso: no"], O: [[40, 60], [20, 80]] },
+    nosig: { nombre: "Red social y ciberacoso, sin asociación", varF: "la red social más utilizada", varC: "haber sufrido ciberacoso", filas: ["Instagram", "Otras"], cols: ["Ciberacoso: sí", "Ciberacoso: no"], O: [[32, 68], [28, 72]] },
     act1: { nombre: "Actividad 1 · Clima de aula y participación", varF: "el clima de aula percibido", varC: "la participación voluntaria", filas: Contenido.ACT1.filas, cols: Contenido.ACT1.cols, O: Contenido.ACT1.O },
     act2: { nombre: "Actividad 2 · Modalidad de trabajo y satisfacción", varF: "la modalidad de trabajo", varC: "la satisfacción laboral", filas: Contenido.ACT2.filas, cols: Contenido.ACT2.cols, O: Contenido.ACT2.O }
   };
   let chiCaso = null;
   function prepararTabla(caso) {
     chiCaso = JSON.parse(JSON.stringify(caso));
-    $("x_caso").innerHTML = `<b>Caso:</b> ¿Se asocia ${caso.varF} con ${caso.varC}? (datos ${caso.nombre === "Al azar" ? "generados al azar" : "de las diapositivas, simulados o ficticios"})`;
+    $("x_caso").innerHTML = `<b>Caso:</b> ¿Se asocia ${caso.varF} con ${caso.varC}? (datos ${caso.nombre === "Al azar" ? "generados al azar" : "simulados o ficticios de los casos de clase"})`;
     $("x_f").value = caso.filas.length; $("x_c").value = caso.cols.length;
     construirRejilla();
   }
@@ -734,9 +734,9 @@
 
   // --- Grupos independientes ---
   const CASOS_TI = {
-    autoestima: { g: ["Chicas", "Chicos"], v: "autoestima", esc: "escala de 1 a 5", m: 3.6, sd: .8, min: 1, max: 5, dec: 2, dir: -1, d: .6, n: [50, 50], desc: "Autoestima de adolescentes en una escala de 1 a 5. Inspirado en el ejemplo de la diapositiva 14 (datos simulados)." },
-    empatia: { g: ["Voluntariado", "Sin voluntariado"], v: "empatía", esc: "IRI, 0–84", m: 54, sd: 10, min: 0, max: 84, dec: 0, dir: -1, d: .15, n: [50, 50], desc: "Empatía de jóvenes que hacen voluntariado y que no lo hacen. Inspirado en la diapositiva 15 (datos simulados)." },
-    ansiedad: { g: ["Psicología", "Criminología"], v: "ansiedad", esc: "0–60", m: 28, sd: 6, min: 0, max: 60, dec: 0, dir: 1, d: .5, n: [40, 35], desc: "Ansiedad de estudiantes de dos grados. Es el caso de homocedasticidad de la diapositiva 21 (datos simulados)." }
+    autoestima: { g: ["Chicas", "Chicos"], v: "autoestima", esc: "escala de 1 a 5", m: 3.6, sd: .8, min: 1, max: 5, dec: 2, dir: -1, d: .6, n: [50, 50], desc: "Autoestima de adolescentes en una escala de 1 a 5. Inspirado en el caso de clase de la autoestima de chicas y chicos (datos simulados)." },
+    empatia: { g: ["Voluntariado", "Sin voluntariado"], v: "empatía", esc: "IRI, 0–84", m: 54, sd: 10, min: 0, max: 84, dec: 0, dir: -1, d: .15, n: [50, 50], desc: "Empatía de jóvenes que hacen voluntariado y que no lo hacen. Inspirado en el caso de clase de la empatía y el voluntariado (datos simulados)." },
+    ansiedad: { g: ["Psicología", "Criminología"], v: "ansiedad", esc: "0–60", m: 28, sd: 6, min: 0, max: 60, dec: 0, dir: 1, d: .5, n: [40, 35], desc: "Ansiedad de estudiantes de dos grados. Inspirado en el caso de clase de homocedasticidad (datos simulados)." }
   };
   let tiDatos = null;
   function cargarCasoTI() {

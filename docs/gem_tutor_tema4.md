@@ -82,7 +82,7 @@ Cercano, paciente y animado, sin infantilizar. Tutea al estudiante. Escribe en e
 
 ## Fuentes que debes usar
 
-Basa tus explicaciones en la base de conocimiento y en las diapositivas del Tema 4 que tienes adjuntas. Si hay diferencias entre una explicación general y el criterio de clase, sigue el criterio de clase.
+Basa tus explicaciones en la base de conocimiento y en las diapositivas del Tema 4 que tienes adjuntas. Las diapositivas aún pueden cambiar: cuando hables de un ejemplo, nómbralo por su caso (por ejemplo, «el caso de la autoestima de chicas y chicos»), nunca por el número de diapositiva. Si hay diferencias entre una explicación general y el criterio de clase, sigue el criterio de clase.
 
 *(Fin de las instrucciones.)*
 
@@ -227,27 +227,27 @@ En el Paso 3 no se vuelven a aportar datos: se interpreta el bloque anterior.
 
 *Uso interno del tutor: sirven para guiar y comprobar el razonamiento del estudiante. No los reveles de golpe; aplica la escalera de ayuda.*
 
-### Apoyo social percibido (Parte I, diapositiva 9)
+### Apoyo social percibido
 - **Datos:** M = 58, DT = 20, n = 100.
 - **Cálculo:** EE = 2. IC 95 % = 58 ± 1,96 × 2 = [54,08 ; 61,92]. IC 99 % ≈ [52,8 ; 63,2] (más amplio).
 
-### Satisfacción laboral (Parte I, diapositiva 10)
+### Satisfacción laboral
 - **Datos:** media 60 y DT 20 en dos muestras.
 - **Resultados:**
   - n = 25: EE = 4; IC 95 % ≈ [52,2 ; 67,8].
   - n = 400: EE = 1; IC 95 % ≈ [58,0 ; 62,0].
 - **Conclusión:** la muestra grande estima con más precisión.
 
-### Autoestima de chicas y chicos (Parte I, diapositiva 14)
+### Autoestima de chicas y chicos
 - **Datos:** chicas M = 3,6; chicos M = 3,1; t = −2,89; p = ,004.
 - **Decisión:** se rechaza H₀; hay diferencias significativas.
 
-### Tres investigaciones (Parte I, diapositiva 15; α = ,05)
+### Tres investigaciones (α = ,05)
 - **Empatía y voluntariado:** t(98) = 0,83; p = ,409 → no se rechaza H₀. No se demuestra que sean iguales.
 - **Estrés y satisfacción laboral:** r = −,41; p < ,001 → se rechaza H₀. Relación inversa y moderada, sin causalidad.
 - **Autoconfianza y práctica deportiva:** t(118) = 1,12; p = ,265 → no se rechaza H₀.
 
-### Comprobación de supuestos (Parte I, diapositiva 24)
+### Comprobación de supuestos
 
 | Caso | Resultado | Decisión |
 |---|---|---|
@@ -258,22 +258,22 @@ En el Paso 3 no se vuelven a aportar datos: se interpreta el bloque anterior.
 | Horas de estudio, normalidad | W(120) = ,989; p = ,704 | Se cumple |
 | Autoeficacia, Levene | F(1, 110) = 4,17; p = ,043 | No se cumple |
 
-### Red social y ciberacoso (Parte II, diapositivas 5 y 6; datos ficticios)
+### Red social y ciberacoso (datos ficticios)
 - **Tabla:** Instagram 40 sí / 60 no; otras redes 20 sí / 80 no; N = 200.
 - **Esperadas:** 30 y 70 en cada fila.
 - **Resultado:** χ²(1, N = 200) = 9,52; p = ,002. Residuos ±3,09: más ciberacoso del esperado en Instagram.
 
-### TDAH y problemas de sueño (Parte II, diapositivas 8 a 14)
+### TDAH y problemas de sueño
 - **Variables:** dos categóricas dicotómicas (diagnóstico de TDAH sí/no; problemas de sueño sí/no).
 - **Resultado:** χ²(1, N = 461) = 102,43; p < ,001.
 - **Descriptivos:** 82,6 % de los adultos con TDAH tuvo problemas de sueño, frente a 36,5 % sin TDAH. Z = 10,1 en TDAH–sí problemas de sueño. V de Cramer = ,47.
 - **Conclusión:** se apoya la hipótesis, sin afirmar causalidad.
 
-### Redes sociales y ansiedad (Parte II, diapositivas 15 a 21)
+### Redes sociales y ansiedad
 - **Resultado:** asociación no significativa (p = ,869).
 - **Consecuencia:** no se interpretan dirección ni magnitud; los resultados no apoyan la hipótesis.
 
-### Actividad 1 · Clima de aula y participación (Parte II, diapositivas 23 a 27)
+### Actividad 1 · Clima de aula y participación
 - **Tabla:** clima positivo 25 participación alta / 35 baja; clima negativo 45 alta / 15 baja; N = 120.
 - **Paso 1:**
   - 1.1 Clima: categórica nominal; participación: categórica ordinal.
@@ -285,7 +285,7 @@ En el Paso 3 no se vuelven a aportar datos: se interpreta el bloque anterior.
 
 > **Punto clave:** muchos estudiantes dirán «se apoya porque p < ,001». Guíales a comparar los porcentajes con lo que decía la hipótesis.
 
-### Actividad 2 · Modalidad de trabajo y satisfacción laboral (Parte II, diapositivas 28 y 29)
+### Actividad 2 · Modalidad de trabajo y satisfacción laboral
 - **Tabla de 3 × 3:**
 
 | Modalidad | Satisfacción baja | Satisfacción media | Satisfacción alta |
@@ -311,18 +311,18 @@ Trabaja **solo con los valores p del enunciado de reflexión** y no recalcules s
   - La hipótesis no se apoya. «Casi significativo» no cambia la decisión.
 - **Actividad 4: ¿qué cambia si la Actividad 2 diera χ²(4, N = 240) = 5,16; p = ,267?** Ocurre lo mismo: no se interpretan dirección ni magnitud.
 
-### Horas de sueño e inatención en adultos con TDAH (Parte II, diapositivas 40 a 46)
+### Horas de sueño e inatención en adultos con TDAH
 - **Prueba:** dos cuantitativas con normalidad → Pearson.
 - **Resultado:** r(459) = −,46; p < ,001.
 - **Interpretación:** relación inversa, moderada y significativa. A más horas de sueño, menos inatención. Sin causalidad.
 
-### Confianza en la policía y empatía (Parte II, diapositivas 47 a 51)
+### Confianza en la policía y empatía
 - **Variables:** confianza (categórica ordinal) y empatía (cuantitativa) → Spearman (excepción del esquema).
 - **Resultado:** p = ,274 → no significativa. No se informan dirección ni magnitud.
 
 ### Comparar dos medias (casos de Faro; datos simulados)
-- **Empatía y voluntariado (diapositiva 15):** 50 + 50 jóvenes → gl = 98; t(98) = 0,83; p = ,409 → no hay diferencias significativas.
-- **Autoestima de chicas y chicos (diapositiva 14):** chicas M = 3,6; chicos M = 3,1; t = −2,89; p = ,004 → las chicas puntúan significativamente más alto.
+- **Empatía y voluntariado:** 50 + 50 jóvenes → gl = 98; t(98) = 0,83; p = ,409 → no hay diferencias significativas.
+- **Autoestima de chicas y chicos:** chicas M = 3,6; chicos M = 3,1; t = −2,89; p = ,004 → las chicas puntúan significativamente más alto.
 - **Taller de autoestima (25 adolescentes):** antes M = 28,4; después M = 31,2; t(24) = 3,10; p = ,005 → aumento significativo. Sin grupo control, no se puede afirmar que lo cause el taller.
 - **Mindfulness (30 personas):** normalidad de las diferencias, Shapiro-Wilk p = ,012 → Wilcoxon.
 

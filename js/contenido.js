@@ -38,22 +38,22 @@
   // Conceptos que se siguen en el cuaderno
   // ------------------------------------------------------------------
   const CONCEPTOS = {
-    var_muestral: { nombre: "Variabilidad muestral", diap: "Parte I, diapositivas 5 y 9", modulo: "muestras", repaso: "Cada muestra da un resultado algo distinto aunque venga de la misma población: el estadístico varía, el parámetro no." },
-    error_tipico: { nombre: "Error típico", diap: "Parte I, diapositiva 10", modulo: "muestras", repaso: "El error típico (DT / √n) mide cuánto varían las medias de una muestra a otra; disminuye al aumentar n." },
-    ic_calculo: { nombre: "Cálculo del intervalo de confianza", diap: "Parte I, diapositivas 7 a 9", modulo: "intervalos", repaso: "IC = media ± valor crítico × error típico. Con un 95 %, el valor crítico es 1,96." },
-    ic_interp: { nombre: "Interpretación del intervalo", diap: "Parte I, diapositivas 7, 8 y 10", modulo: "intervalos", repaso: "El 95 % se refiere al procedimiento: de cada 100 intervalos, unos 95 contienen el parámetro. Un intervalo más estrecho es más preciso." },
-    confianza_alfa: { nombre: "Nivel de confianza y α", diap: "Parte I, diapositiva 7", modulo: "intervalos", repaso: "1 − α es el nivel de confianza. Con α = ,05, queda un 2,5 % en cada cola y el valor crítico es 1,96." },
-    valor_p: { nombre: "Valor p", diap: "Parte I, diapositiva 14", modulo: "juicio", repaso: "p es la probabilidad de obtener un resultado tan extremo o más si H₀ fuera cierta. No es la probabilidad de que H₀ sea cierta." },
-    decision_h0: { nombre: "Decisión sobre H₀", diap: "Parte I, diapositivas 12 a 15", modulo: "juicio", repaso: "Si p ≤ α, rechazamos H₀. Si p > α, no la rechazamos (nunca la «aceptamos» ni la demostramos)." },
-    errores: { nombre: "Errores tipo I y II", diap: "apartado «3 · El juicio» de esta herramienta", modulo: "juicio", repaso: "Error tipo I: rechazar H₀ siendo verdadera (condenar a un inocente, probabilidad α). Error tipo II: no rechazarla siendo falsa." },
-    supuestos: { nombre: "Lógica de los supuestos", diap: "Parte I, diapositivas 17 a 24", modulo: "supuestos", repaso: "En normalidad y homocedasticidad, H₀ dice que el supuesto se cumple: queremos p > ,05." },
-    eleccion_prueba: { nombre: "Elección de la prueba", diap: "Parte I, diapositivas 26 y 27", modulo: "esquema", repaso: "Primero el tipo de variables, después el objetivo (asociar, relacionar, comparar) y por último los supuestos." },
-    esperadas: { nombre: "Frecuencias esperadas", diap: "Parte II, diapositiva 5", modulo: "chi", repaso: "E = (total de fila × total de columna) / N: lo que esperaríamos si las variables fueran independientes." },
-    residuos: { nombre: "Residuos corregidos", diap: "Parte II, diapositivas 6 y 7", modulo: "chi", repaso: "Z > +1,96: más casos de los esperados; Z < −1,96: menos; entre ambos, sin diferencia significativa en esa casilla." },
-    apa: { nombre: "Redacción del resultado", diap: "Parte II, diapositivas 9 a 14", modulo: "chi", repaso: "Tres pasos: justificación, resultados (APA: χ²(gl, N = …) = …, p = …) y conclusión sin afirmaciones causales." },
-    comparar_medias: { nombre: "Comparar medias con la t de Student", diap: "apartados «8 · Grupos independientes» y «9 · Muestras relacionadas» de Faro", modulo: "independientes", repaso: "La t compara dos medias: grupos distintos (independientes, gl = n₁ + n₂ − 2) o las mismas personas dos veces (relacionadas, gl = n − 1)." },
-    no_parametricas: { nombre: "Alternativas no paramétricas (U y Wilcoxon)", diap: "apartados 8 y 9 de Faro y esquema de decisión (Parte I, diapositiva 26)", modulo: "independientes", repaso: "Sin normalidad: U de Mann-Whitney para grupos independientes y Wilcoxon para muestras relacionadas. Comparan rangos e informan de medianas." },
-    correlacion: { nombre: "Dirección, intensidad y significación de r", diap: "Parte II, diapositivas 36 a 39", modulo: "correlaciones", repaso: "El signo indica la dirección, |r| la intensidad y p la significación: son tres preguntas distintas." }
+    var_muestral: { nombre: "Variabilidad muestral", diap: "apartado «1 · Muestras»: caso del apoyo social percibido", modulo: "muestras", repaso: "Cada muestra da un resultado algo distinto aunque venga de la misma población: el estadístico varía, el parámetro no." },
+    error_tipico: { nombre: "Error típico", diap: "apartado «1 · Muestras»: qué ocurre con el error típico al aumentar n", modulo: "muestras", repaso: "El error típico (DT / √n) mide cuánto varían las medias de una muestra a otra; disminuye al aumentar n." },
+    ic_calculo: { nombre: "Cálculo del intervalo de confianza", diap: "apartado «2 · Intervalos»: IC del apoyo social percibido (M = 58, DT = 20, n = 100)", modulo: "intervalos", repaso: "IC = media ± valor crítico × error típico. Con un 95 %, el valor crítico es 1,96." },
+    ic_interp: { nombre: "Interpretación del intervalo", diap: "apartado «2 · Intervalos»: satisfacción laboral con n = 25 frente a n = 400", modulo: "intervalos", repaso: "El 95 % se refiere al procedimiento: de cada 100 intervalos, unos 95 contienen el parámetro. Un intervalo más estrecho es más preciso." },
+    confianza_alfa: { nombre: "Nivel de confianza y α", diap: "apartado «2 · Intervalos»: de dónde sale el 1,96", modulo: "intervalos", repaso: "1 − α es el nivel de confianza. Con α = ,05, queda un 2,5 % en cada cola y el valor crítico es 1,96." },
+    valor_p: { nombre: "Valor p", diap: "apartado «3 · El juicio»: caso de la autoestima de chicas y chicos", modulo: "juicio", repaso: "p es la probabilidad de obtener un resultado tan extremo o más si H₀ fuera cierta. No es la probabilidad de que H₀ sea cierta." },
+    decision_h0: { nombre: "Decisión sobre H₀", diap: "apartado «3 · El juicio»: analogía del juicio y las tres investigaciones con α = ,05", modulo: "juicio", repaso: "Si p ≤ α, rechazamos H₀. Si p > α, no la rechazamos (nunca la «aceptamos» ni la demostramos)." },
+    errores: { nombre: "Errores tipo I y II", diap: "apartado «3 · El juicio»: errores tipo I y II", modulo: "juicio", repaso: "Error tipo I: rechazar H₀ siendo verdadera (condenar a un inocente, probabilidad α). Error tipo II: no rechazarla siendo falsa." },
+    supuestos: { nombre: "Lógica de los supuestos", diap: "apartado «4 · Supuestos»: los casos de normalidad y homocedasticidad", modulo: "supuestos", repaso: "En normalidad y homocedasticidad, H₀ dice que el supuesto se cumple: queremos p > ,05." },
+    eleccion_prueba: { nombre: "Elección de la prueba", diap: "apartado «5 · ¿Qué prueba?» y el esquema de decisión", modulo: "esquema", repaso: "Primero el tipo de variables, después el objetivo (asociar, relacionar, comparar) y por último los supuestos." },
+    esperadas: { nombre: "Frecuencias esperadas", diap: "apartado «6 · Chi-cuadrado»: caso de la red social y el ciberacoso", modulo: "chi", repaso: "E = (total de fila × total de columna) / N: lo que esperaríamos si las variables fueran independientes." },
+    residuos: { nombre: "Residuos corregidos", diap: "apartado «6 · Chi-cuadrado»: residuos del caso TDAH y problemas de sueño", modulo: "chi", repaso: "Z > +1,96: más casos de los esperados; Z < −1,96: menos; entre ambos, sin diferencia significativa en esa casilla." },
+    apa: { nombre: "Redacción del resultado", diap: "las fichas de las Actividades 1 y 2 (redacción en 3 pasos)", modulo: "chi", repaso: "Tres pasos: justificación, resultados (APA: χ²(gl, N = …) = …, p = …) y conclusión sin afirmaciones causales." },
+    comparar_medias: { nombre: "Comparar medias con la t de Student", diap: "apartados «8 · Grupos independientes» y «9 · Muestras relacionadas»", modulo: "independientes", repaso: "La t compara dos medias: grupos distintos (independientes, gl = n₁ + n₂ − 2) o las mismas personas dos veces (relacionadas, gl = n − 1)." },
+    no_parametricas: { nombre: "Alternativas no paramétricas (U y Wilcoxon)", diap: "apartados «8 · Grupos independientes» y «9 · Muestras relacionadas» y el esquema de decisión", modulo: "independientes", repaso: "Sin normalidad: U de Mann-Whitney para grupos independientes y Wilcoxon para muestras relacionadas. Comparan rangos e informan de medianas." },
+    correlacion: { nombre: "Dirección, intensidad y significación de r", diap: "apartado «7 · Correlaciones»: tabla de intensidad y caso de sueño e inatención", modulo: "correlaciones", repaso: "El signo indica la dirección, |r| la intensidad y p la significación: son tres preguntas distintas." }
   };
 
   // ------------------------------------------------------------------
@@ -167,14 +167,14 @@
   };
 
   // ------------------------------------------------------------------
-  // Datos de las actividades de chi-cuadrado (Parte II de las diapositivas)
+  // Datos de las actividades de chi-cuadrado
   // ------------------------------------------------------------------
-  const ACT1 = { // Clima de aula y participación voluntaria (d. 23-27)
+  const ACT1 = { // Clima de aula y participación voluntaria
     filas: ["Clima positivo", "Clima negativo"], cols: ["Participación alta", "Participación baja"],
     O: [[25, 35], [45, 15]]
   };
   ACT1.r = E.chiCuadrado(ACT1.O);
-  const ACT2 = { // Modalidad de trabajo y satisfacción laboral (d. 28-29)
+  const ACT2 = { // Modalidad de trabajo y satisfacción laboral
     filas: ["Presencial", "Híbrida", "Remota"], cols: ["Satisfacción baja", "Satisfacción media", "Satisfacción alta"],
     O: [[35, 30, 15], [12, 23, 45], [25, 30, 25]]
   };
@@ -224,7 +224,7 @@
     intervalos: [{
       id: "basicos", titulo: "Ejercicios", ejercicios: [
         { id: "i1", tipo: "completar", concepto: "ic_calculo",
-          enunciado: "Apoyo social percibido (diapositiva 9): M = 58, DT = 20, n = 100. Calcula el IC al 95 % (valor crítico 1,96).",
+          enunciado: "Apoyo social percibido en una muestra de estudiantes: M = 58, DT = 20, n = 100. Calcula el IC al 95 % (valor crítico 1,96).",
           campos: [{ etiqueta: "Límite inferior", valor: 54.08, tol: 0.1 }, { etiqueta: "Límite superior", valor: 61.92, tol: 0.1 }],
           pista: "Primero el error típico: 20 / √100 = 2. Después el margen: 1,96 × 2.",
           explicacion: "EE = 2; margen = 1,96 × 2 = 3,92; IC = 58 ± 3,92 = [54,08 ; 61,92]." },
@@ -249,7 +249,7 @@
           correcta: 0, pista: "Para acertar más a menudo, ¿necesitas un «aro» más grande o más pequeño?",
           explicacion: "El del 99 %: su valor crítico es 2,576 en lugar de 1,96. Más confianza implica menos precisión con los mismos datos." },
         { id: "i6", tipo: "test", concepto: "ic_interp",
-          enunciado: "Satisfacción laboral (diapositiva 10): dos muestras con media 60 y DT 20. Con n = 25, el IC al 95 % es [52,2 ; 67,8]; con n = 400, es [58,0 ; 62,0]. ¿Cuál estima con más precisión?",
+          enunciado: "Satisfacción laboral: dos muestras con media 60 y DT 20. Con n = 25, el IC al 95 % es [52,2 ; 67,8]; con n = 400, es [58,0 ; 62,0]. ¿Cuál estima con más precisión?",
           opciones: ["La de n = 400, porque su intervalo es más estrecho.", "La de n = 25, porque su intervalo abarca más valores.", "Ninguna, porque las dos tienen la misma media y DT."],
           correcta: 0, pista: "Precisión = intervalo estrecho. ¿Qué le pasa al error típico con más participantes?",
           explicacion: "Con n = 400 el error típico es menor (20 / 20 = 1 frente a 20 / 5 = 4) y el intervalo, más estrecho: la estimación es más precisa." }
@@ -263,13 +263,13 @@
           pista: "Repasa la tabla de «La analogía» en Explora.",
           explicacion: "Inocencia → H₀; duda razonable → α; probabilidad de las pruebas si fuera inocente → valor p; condenar a un inocente → error tipo I; absolver a un culpable → error tipo II." },
         { id: "j2", tipo: "clasificar", concepto: "decision_h0",
-          enunciado: "Tres investigaciones de la diapositiva 15, con α = ,05. ¿Qué decisión tomas en cada una?",
+          enunciado: "Tres investigaciones distintas analizadas con α = ,05. ¿Qué decisión tomas en cada una?",
           categorias: ["Se rechaza H₀", "No se rechaza H₀"],
           items: [["Empatía y voluntariado: t(98) = 0,83; p = ,409", "No se rechaza H₀"], ["Estrés y satisfacción laboral: r = −,41; p < ,001", "Se rechaza H₀"], ["Autoconfianza y práctica deportiva: t(118) = 1,12; p = ,265", "No se rechaza H₀"]],
           pista: "Compara cada p con ,05: si p ≤ ,05, se rechaza H₀.",
           explicacion: ",409 y ,265 son mayores que ,05: no se rechaza H₀. p < ,001 es menor que ,05: se rechaza H₀." },
         { id: "j3", tipo: "test", concepto: "decision_h0",
-          enunciado: "Autoestima en adolescentes (diapositiva 14): chicas M = 3,6; chicos M = 3,1; t = −2,89; p = ,004. Con α = ,05, ¿qué decides?",
+          enunciado: "Autoestima en adolescentes, comparando chicas y chicos: chicas M = 3,6; chicos M = 3,1; t = −2,89; p = ,004. Con α = ,05, ¿qué decides?",
           opciones: ["Rechazo H₀: la diferencia es estadísticamente significativa.", "No rechazo H₀: una diferencia de 0,5 puntos es pequeña.", "Acepto H₀: las dos medias son prácticamente iguales."],
           correcta: 0, pista: "¿,004 es mayor o menor que ,05?",
           explicacion: ",004 ≤ ,05: unas diferencias así serían muy improbables si no las hubiera en la población. Rechazamos H₀." },
@@ -298,7 +298,7 @@
           correcta: 0, pista: "¿Qué dice H₀ en una prueba de supuestos?",
           explicacion: "H₀ dice que el supuesto se cumple. Queremos no rechazarla: p > ,05." },
         { id: "s2", tipo: "clasificar", concepto: "supuestos",
-          enunciado: "Ejercicios de la diapositiva 24 (α = ,05). ¿Se cumple el supuesto?",
+          enunciado: "Seis comprobaciones de supuestos (α = ,05). ¿Se cumple el supuesto?",
           categorias: ["Se cumple", "No se cumple"],
           items: [["Autoestima, normalidad: W(60) = ,974; p = ,228", "Se cumple"], ["Ansiedad, normalidad: D(45) = ,187; p = ,021", "No se cumple"], ["Satisfacción académica, Levene: F(1, 101) = 0,936; p = ,336", "Se cumple"], ["Estrés laboral, Levene: F(1, 78) = 5,21; p = ,025", "No se cumple"], ["Horas de estudio, normalidad: W(120) = ,989; p = ,704", "Se cumple"], ["Autoeficacia, Levene: F(1, 110) = 4,17; p = ,043", "No se cumple"]],
           pista: "p > ,05 → se cumple. p ≤ ,05 → no se cumple.",
@@ -324,12 +324,12 @@
           pista: "Primero mira el tipo de variables y el objetivo; después, la normalidad.",
           explicacion: "Categóricas → chi-cuadrado; relacionar con normalidad → Pearson, sin ella → Spearman; mismas personas con normalidad → t relacionadas; grupos independientes sin normalidad → U de Mann-Whitney." },
         { id: "e2", tipo: "test", concepto: "eleccion_prueba",
-          enunciado: "Diagnóstico de TDAH (sí/no) y problemas de sueño (sí/no) en 461 adultos (Parte II, diapositiva 8). ¿Qué prueba usamos?",
+          enunciado: "Diagnóstico de TDAH (sí/no) y problemas de sueño (sí/no) en 461 adultos. ¿Qué prueba usamos?",
           opciones: ["Chi-cuadrado de Pearson", "Correlación de Spearman", "t de Student (muestras independientes)"],
           correcta: 0, pista: "¿Las dos variables son categóricas o cuantitativas?",
           explicacion: "Dos variables categóricas dicotómicas y objetivo de asociación → chi-cuadrado." },
         { id: "e3", tipo: "test", concepto: "eleccion_prueba",
-          enunciado: "Horas de sueño a la semana y puntuación de inatención en adultos con TDAH (Parte II, diapositiva 40). Ambas cumplen la normalidad. ¿Qué prueba usamos?",
+          enunciado: "Horas de sueño a la semana y puntuación de inatención en adultos con TDAH. Ambas cumplen la normalidad. ¿Qué prueba usamos?",
           opciones: ["Correlación de Pearson", "Correlación de Spearman", "t de Student (muestras relacionadas)"],
           correcta: 0, pista: "Dos cuantitativas, objetivo relacionar… ¿y la normalidad?",
           explicacion: "Dos variables cuantitativas, objetivo relacionar y normalidad → Pearson." },
@@ -344,7 +344,7 @@
     chi: [
       { id: "basicos", titulo: "Ejercicios", ejercicios: [
         { id: "x1", tipo: "completar", concepto: "esperadas",
-          enunciado: "Red social y ciberacoso (Parte II, diapositiva 5). Calcula las frecuencias esperadas de la fila Instagram si las variables fueran independientes.",
+          enunciado: "Red social más utilizada (Instagram/otras) y haber sufrido ciberacoso (sí/no). Calcula las frecuencias esperadas de la fila Instagram si las variables fueran independientes.",
           contexto: CIBER,
           campos: [{ etiqueta: "Instagram – Sí", valor: 30, tol: 0.05 }, { etiqueta: "Instagram – No", valor: 70, tol: 0.05 }],
           pista: "E = total de fila × total de columna / N. Para Instagram–Sí: 100 × 60 / 200.",
@@ -355,7 +355,7 @@
           correcta: 0, pista: "Se calculan suponiendo H₀.",
           explicacion: "Son las frecuencias bajo independencia (H₀). El χ² compara las observadas con ellas." },
         { id: "x3", tipo: "test", concepto: "residuos",
-          enunciado: "TDAH y problemas de sueño (diapositiva 13): en la casilla «TDAH – sí tiene problemas de sueño», el residuo corregido es z = 10,1. ¿Qué significa?",
+          enunciado: "TDAH y problemas de sueño en 461 adultos: en la casilla «TDAH – sí tiene problemas de sueño», el residuo corregido es z = 10,1. ¿Qué significa?",
           opciones: ["Hay muchos más casos de los esperados en esa casilla.", "Hay muchos menos casos de los esperados en esa casilla.", "No se interpreta, porque supera el límite de 1,96."],
           correcta: 0, pista: "Mira el signo y compáralo con +1,96.",
           explicacion: "z = 10,1 > +1,96: en esa casilla hay significativamente más casos de los esperados bajo independencia." },
@@ -371,7 +371,7 @@
           correcta: 0, pista: "Entre paréntesis van los grados de libertad y el tamaño de la muestra.",
           explicacion: "Formato: χ²(gl, N = …) = valor, p = … Entre paréntesis van los grados de libertad y el tamaño muestral, y nunca se escribe p = ,000: se pone p < ,001." }
       ] },
-      { id: "act1", titulo: "Ficha · Actividad 1", descripcion: "Clima de aula percibido y participación voluntaria en clase (120 estudiantes universitarios, Parte II, diapositivas 23 a 27). Hipótesis: los estudiantes que perciben un clima de aula positivo presentarán una alta participación voluntaria. Vuelca aquí lo que hiciste en papel.",
+      { id: "act1", titulo: "Ficha · Actividad 1", descripcion: "Clima de aula percibido y participación voluntaria en clase (120 estudiantes universitarios). Hipótesis: los estudiantes que perciben un clima de aula positivo presentarán una alta participación voluntaria. Vuelca aquí lo que hiciste en papel.",
         contexto: tablaHTML(ACT1, true), ejercicios: [
         { id: "a1_11", tipo: "clasificar", concepto: "eleccion_prueba",
           enunciado: "1.1 ¿Qué variables tenemos?", categorias: ["Categórica nominal", "Categórica ordinal", "Cuantitativa"],
@@ -390,7 +390,7 @@
         { id: "a1_e", tipo: "completar", concepto: "esperadas", enunciado: "Comprueba una frecuencia esperada: Clima positivo – Participación alta.",
           campos: [{ etiqueta: "Esperada", valor: ACT1.r.E[0][0], tol: 0.05 }],
           pista: "60 × 70 / 120.", explicacion: `E = 60 × 70 / 120 = ${fmt(ACT1.r.E[0][0], 0)}. Se observaron 25: menos de los esperados.` },
-        { id: "a1_22", tipo: "completar", concepto: "apa", enunciado: "2.2 Reporta el estadístico de contraste (tabla 2 de la diapositiva 27).",
+        { id: "a1_22", tipo: "completar", concepto: "apa", enunciado: "2.2 Reporta el estadístico de contraste (χ² de la tabla de la actividad).",
           campos: [{ etiqueta: "χ²", valor: ACT1.r.chi, tol: 0.05 }, { etiqueta: "gl", valor: ACT1.r.gl, tol: 0 }, { etiqueta: "N", valor: ACT1.r.N, tol: 0 }],
           pista: "gl = (filas − 1) × (columnas − 1).", explicacion: `χ²(1, N = 120) = ${fmt(ACT1.r.chi)}, p < ,001.` },
         { id: "a1_21", tipo: "test", concepto: "decision_h0", enunciado: "2.1 ¿El resultado es estadísticamente significativo?",
@@ -408,7 +408,7 @@
           opciones: ["La participación alta es más frecuente con clima negativo; no implica causalidad.", "Un clima de aula negativo provoca que el alumnado participe más en las clases.", "El clima de aula no guarda relación con la participación voluntaria."], correcta: 0,
           pista: "¿Permite un estudio así hablar de causas?", explicacion: "Describimos la asociación encontrada sin afirmaciones causales: el diseño no las permite." }
       ] },
-      { id: "act2", titulo: "Ficha · Actividad 2", descripcion: "Modalidad de trabajo y satisfacción laboral (240 trabajadores, Parte II, diapositivas 28 y 29). Hipótesis: quienes trabajan en modalidad híbrida presentarán una mayor proporción de satisfacción alta que quienes trabajan de forma presencial o en remoto. Las cifras se calculan a partir de la tabla.",
+      { id: "act2", titulo: "Ficha · Actividad 2", descripcion: "Modalidad de trabajo y satisfacción laboral (240 trabajadores). Hipótesis: quienes trabajan en modalidad híbrida presentarán una mayor proporción de satisfacción alta que quienes trabajan de forma presencial o en remoto. Las cifras se calculan a partir de la tabla.",
         contexto: tablaHTML(ACT2, true), ejercicios: [
         { id: "a2_11", tipo: "clasificar", concepto: "eleccion_prueba", enunciado: "1.1 ¿Qué variables tenemos?",
           categorias: ["Categórica nominal", "Categórica ordinal", "Cuantitativa"],
@@ -439,30 +439,30 @@
         { id: "r4", tipo: "test", concepto: "apa",
           enunciado: "Actividad 4: en la Actividad 2, si el resultado fuera χ²(4, N = 240) = 5,16; p = ,267, ¿qué escribirías en los apartados 2.3 y 2.4?",
           opciones: ["Nada: sin significación no se interpretan dirección ni magnitud.", "Los residuos más altos y la V de Cramer, igual que antes.", "Que la modalidad híbrida tiene más satisfacción alta."], correcta: 0,
-          pista: "Revisa el caso «redes sociales y ansiedad» (diapositivas 20 y 21).",
+          pista: "Piensa qué se informa cuando el χ² no es significativo: ¿tiene sentido hablar de dirección o de magnitud?",
           explicacion: "Si no se rechaza H₀, no se informa de dirección ni de magnitud: los apartados 2.3 y 2.4 quedan vacíos." }
       ] }
     ],
     correlaciones: [{
       id: "basicos", titulo: "Ejercicios", ejercicios: [
         { id: "c1", tipo: "emparejar", concepto: "correlacion",
-          enunciado: "Empareja cada coeficiente con el diagrama de dispersión que le corresponde (diapositiva 39).",
+          enunciado: "Empareja cada coeficiente con el diagrama de dispersión que le corresponde.",
           pares: [["r = 1,00", "Todos los puntos sobre una recta ascendente"], ["r = −1,00", "Todos los puntos sobre una recta descendente"], ["r = ,62", "Nube ascendente: a más horas de estudio, mejor nota"], ["r = −,65", "Nube descendente: a más horas de sueño, menos ansiedad"], ["r = ,00", "Nube sin ningún patrón"]],
           pista: "El signo dice hacia dónde va la nube; |r| = 1 significa que todos los puntos están en la recta.",
           explicacion: "±1: relación perfecta (recta). Positivo: ascendente; negativo: descendente; 0: sin patrón lineal." },
         { id: "c2", tipo: "clasificar", concepto: "correlacion",
-          enunciado: "Clasifica la intensidad con la tabla de referencia de clase (diapositiva 36).",
+          enunciado: "Clasifica la intensidad con la tabla de referencia de clase (,10 / ,30 / ,50 / ,70).",
           categorias: ["Muy débil", "Débil", "Moderada", "Fuerte", "Muy fuerte"],
           items: [["r = ,08", "Muy débil"], ["r = −,25", "Débil"], ["r = −,41", "Moderada"], ["r = ,58", "Fuerte"], ["r = ,85", "Muy fuerte"]],
           pista: "Fíjate en |r|, sin el signo: 0–,10, ,10–,30, ,30–,50, ,50–,70 y ,70–1.",
           explicacion: "La intensidad depende del valor absoluto: ,08 muy débil; ,25 débil; ,41 moderada; ,58 fuerte; ,85 muy fuerte." },
         { id: "c3", tipo: "test", concepto: "correlacion",
-          enunciado: "Horas de sueño e inatención en adultos con TDAH (Parte II, diapositiva 45): r(459) = −,46; p < ,001. ¿Cómo se describe esta relación?",
+          enunciado: "Horas de sueño e inatención en 461 adultos con TDAH: r(459) = −,46; p < ,001. ¿Cómo se describe esta relación?",
           opciones: ["Inversa, moderada y estadísticamente significativa.", "Positiva, fuerte y estadísticamente significativa.", "Inversa, débil y sin significación estadística."],
           correcta: 0, pista: "Signo → dirección; |r| → intensidad; p → significación.",
           explicacion: "Signo negativo → inversa; |r| = ,46 → moderada (entre ,30 y ,50); p < ,001 → significativa: a más horas de sueño, menos inatención." },
         { id: "c4", tipo: "test", concepto: "correlacion",
-          enunciado: "Confianza en la policía y empatía (diapositivas 47 a 51): p = ,274. ¿Qué se informa?",
+          enunciado: "Confianza en la policía y empatía: p = ,274. ¿Qué se informa?",
           opciones: ["No hay relación significativa; no se informan dirección ni magnitud.", "Hay una relación débil y positiva entre ambas variables.", "Queda demostrado que no existe relación entre ambas variables."],
           correcta: 0, pista: "Si no se rechaza H₀, ¿se interpretan la dirección y la magnitud?",
           explicacion: "p = ,274 > ,05: no se rechaza H₀ y no se reportan dirección ni magnitud." },
@@ -492,12 +492,12 @@
           pista: "Primero la normalidad de cada grupo; si se cumple, después Levene.",
           explicacion: "Con normalidad y homocedasticidad → t de Student. Si falla la normalidad, o según nuestro esquema la homocedasticidad → U de Mann-Whitney." },
         { id: "ti3", tipo: "completar", concepto: "comparar_medias",
-          enunciado: "Empatía y voluntariado (diapositiva 15): 50 jóvenes hacen voluntariado y 50 no. ¿Cuántos grados de libertad tiene la t de Student?",
+          enunciado: "Empatía y voluntariado: 50 jóvenes hacen voluntariado y 50 no. ¿Cuántos grados de libertad tiene la t de Student?",
           campos: [{ etiqueta: "gl", valor: 98, tol: 0 }],
           pista: "En muestras independientes, gl = n₁ + n₂ − 2.",
           explicacion: "gl = 50 + 50 − 2 = 98. Por eso el resultado se escribe t(98) = 0,83, p = ,409." },
         { id: "ti4", tipo: "test", concepto: "comparar_medias",
-          enunciado: "Autoestima (diapositiva 14): chicas M = 3,6; chicos M = 3,1; t = −2,89; p = ,004. ¿Qué conclusión es correcta?",
+          enunciado: "Autoestima de chicas y chicos: chicas M = 3,6; chicos M = 3,1; t = −2,89; p = ,004. ¿Qué conclusión es correcta?",
           opciones: ["Las chicas tienen una autoestima media significativamente mayor.", "Los chicos tienen una autoestima media significativamente mayor.", "No hay diferencias significativas entre chicas y chicos."],
           correcta: 0, pista: "Primero mira p; después, qué media es mayor. El signo de t solo depende del orden en que se introducen los grupos.",
           explicacion: "p = ,004 ≤ ,05: hay diferencias significativas, y la media de las chicas (3,6) es mayor que la de los chicos (3,1)." },
