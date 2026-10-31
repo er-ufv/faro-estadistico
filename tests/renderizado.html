@@ -5,6 +5,10 @@
 try {
    const out=[]; const test=(name,src,check)=>{const d=document.createElement('div');AntonioRender.render(d,src);if(!check(d))throw Error(name+': '+d.innerHTML);out.push(name);};
    test('Negritas escapadas y ejemplo original',String.raw`La \*\*hipótesis nula ($H_0$)\*\* y $p > ,05$: \*\*no rechazamos $H_0$\*\*.`,d=>d.querySelectorAll('strong').length===2&&d.querySelectorAll('.katex').length===3);
+   test('Mensaje del usuario: cursivas y negritas anidadas',String.raw`¡Cuidado aquí! Una confusión muy común es pensar que H₀ (la hipótesis nula) se \*calcula\* con una fórmula, como si fuera un número. H₀ no es un resultado matemático que se calcule, sino un \*\*enunciado o una suposición sobre la población\*\* (por ejemplo: «la media del grupo A es igual a la media del grupo B»). Lo que sí se calcula con una fórmula (la de la \*t\* de Student) es el \*\*estadístico \*t\*\*\* a partir de los datos de tu muestra. Pensando en la analogía del juicio que usamos en clase: si H₀ es la "presunción de inocencia", ¿qué crees que representan las pruebas que se evalúan en ese juicio para poder tomar una decisión?`,d=>d.querySelectorAll('strong').length===2&&d.querySelectorAll('em').length===3&&d.querySelector('strong em')?.textContent==='t'&&!d.textContent.includes('*'));
+   test('Negrita escapada multilínea',String.raw`\*\*Primera línea
+segunda línea\*\*`,d=>d.querySelector('strong')&&!d.textContent.includes('*'));
+   test('Código dentro de negrita conserva escapes',String.raw`**Ejemplo \`\*literal\*\`**`.replaceAll('\\`','`'),d=>d.querySelector('code')?.textContent===String.raw`\*literal\*`);
    test('Markdown: lista, enlace, cursiva', '**Hola**\n\n- *Uno*\n- [Dos](https://example.org)',d=>d.querySelector('strong')&&d.querySelectorAll('li').length===2&&d.querySelector('em')&&d.querySelector('a'));
    test('Cuatro delimitadores',String.raw`$H_0$ y \(p < .05\)
 
@@ -21,6 +25,6 @@ $$\frac{a}{b}$$
    const original=window.DOMPurify;window.DOMPurify=null;
    test('Fallo de biblioteca: texto seguro','<img src=x onerror=alert(1)>',d=>!d.querySelector('img')&&d.textContent.includes('<img'));
    window.DOMPurify=original;
-document.getElementById('resultado').textContent=out.length+' pruebas superadas:\n'+out.join('\n');
+   document.getElementById('resultado').textContent=out.length+' pruebas superadas:\n'+out.join('\n');
 } catch(e) {document.getElementById('resultado').textContent='FALLO: '+e.message;throw e;}
 </script></html>

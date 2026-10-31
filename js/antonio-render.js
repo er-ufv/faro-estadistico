@@ -26,14 +26,33 @@
       const parser = new marked.Marked({gfm:true, breaks:true});
       parser.use({extensions:[
         {name:'mathBlock', level:'block', start:src=>src.search(/\$\$|\\\[/), tokenizer:src=>token(src,true), renderer:placeholder},
-        {name:'mathInline', level:'inline', start:src=>src.search(/\$|\\[([]/), tokenizer:src=>token(src,false), renderer:placeholder},
-        {name:'escapedBold', level:'inline', start:src=>src.indexOf('\\*\\*'),
-          tokenizer(src) {
-            const m = /^\\\*\\\*([^\n]+?)\\\*\\\*/.exec(src);
-            if (m) return {type:'escapedBold',raw:m[0],tokens:this.lexer.inlineTokens(m[1])};
-          }, renderer(t) { return '<strong>'+this.parser.parseInline(t.tokens)+'</strong>'; }}
+        {name:'mathInline', level:'inline', start:src=>src.search(/\$|\\[([]/), tokenizer:src=>token(src,false), renderer:placeholder}
       ]});
-      const clean = DOMPurify.sanitize(parser.parse(source), {
+      // Normalize emphasis only in prose. Block code is never visited here;
+      // inline code, raw HTML and math are protected before unescaping stars.
+      function normalizeInline(text) {
+        const protectedParts = [];
+        const marker = 'ANTONIOPROTECTED' + Math.random().toString(36).slice(2) + 'X';
+        const inline = parser.Lexer.lexInline(text, parser.defaults);
+        parser.walkTokens(inline, t => {
+          if (['codespan','mathInline','html'].includes(t.type)) protectedParts.push(t.raw);
+        });
+        let normalized = text;
+        protectedParts.forEach((raw, i) => { normalized = normalized.replace(raw, marker + i + 'Z'); });
+        normalized = normalized.replace(/\\\*/g, '*');
+        protectedParts.forEach((raw, i) => { normalized = normalized.replace(marker + i + 'Z', () => raw); });
+        return parser.Lexer.lexInline(normalized, parser.defaults);
+      }
+      const tokens = parser.lexer(source);
+      parser.walkTokens(tokens, t => {
+        if (['paragraph','heading','text'].includes(t.type) && t.tokens) {
+          t.tokens = normalizeInline(t.text);
+        }
+        if (t.type === 'table') {
+          [...t.header, ...t.rows.flat()].forEach(cell => {cell.tokens = normalizeInline(cell.text);});
+        }
+      });
+      const clean = DOMPurify.sanitize(parser.parser(tokens), {
         ALLOWED_TAGS:allowedTags, ALLOWED_ATTR:['href','title','start','data-antonio-math'],
         ALLOW_DATA_ATTR:false, ALLOW_ARIA_ATTR:false, RETURN_DOM_FRAGMENT:true
       });
