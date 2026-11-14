@@ -10,7 +10,8 @@
   const azar = a => a[Math.floor(Math.random() * a.length)];
   const barajar = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
   const pocoMovimiento = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const MODULOS_ORDEN = ["muestras", "intervalos", "juicio", "supuestos", "esquema", "chi", "correlaciones", "independientes", "relacionadas"];
+  const MODULOS_T3 = ["variables", "central", "posicion", "dispersion", "forma", "graficos", "repaso3"];
+  const MODULOS_ORDEN = MODULOS_T3.concat(["muestras", "intervalos", "juicio", "supuestos", "esquema", "chi", "correlaciones", "independientes", "relacionadas"]);
 
   // ------------------------------------------------------------------
   // Almacenamiento (con alternativa en memoria si el navegador lo bloquea)
@@ -265,23 +266,26 @@
     const sec = $("tab-" + mod); if (!sec || sec.dataset.montado) return;
     sec.dataset.montado = "1";
     const tieneExplora = !!sec.querySelector('[data-paso="explora"]');
+    const tieneProf = !!(window.Profundiza && window.Profundiza.tiene(mod));
     const barra = document.createElement("nav");
     barra.className = "pasos-mod"; barra.setAttribute("aria-label", "Pasos del módulo");
     barra.innerHTML = `<button data-p="explica"><b>1</b> Explicación</button>` + (tieneExplora ? `<button data-p="explora"><b>2</b> Explora</button>` : "") +
-      `<button data-p="practica"><b>${tieneExplora ? 3 : 2}</b> Practica <span class="cuenta"></span></button>`;
+      `<button data-p="practica"><b>${tieneExplora ? 3 : 2}</b> Practica <span class="cuenta"></span></button>` +
+      (tieneProf ? `<button data-p="profundiza" class="btn-prof"><b>+</b> Para profundizar</button>` : "");
     sec.prepend(barra);
     const esp = App.ESPACIO[mod], lista = esp ? ESPACIOS[esp].mods : null, i = lista ? lista.indexOf(mod) : -1;
     const migas = document.createElement("div"); migas.className = "migas";
-    migas.innerHTML = (esp ? `<button class="enlace-ej" data-ir-esp="${esp}">${ESPACIOS[esp].titulo}</button><span>›</span>` : `<button class="enlace-ej" data-ir-esp="inicio">Inicio</button><span>›</span>`) +
+    migas.innerHTML = (esp ? `<button class="enlace-ej" data-ir-esp="${esp === "descriptiva" ? "tema3" : esp}">${ESPACIOS[esp].titulo}</button><span>›</span>` : `<button class="enlace-ej" data-ir-esp="inicio">Inicio</button><span>›</span>`) +
       `<b>${C.MODULOS[mod].titulo}</b><span class="migas-nav">` +
       (lista && i > 0 ? `<button class="enlace-ej" data-ir-esp="${lista[i - 1]}">◀ ${C.MODULOS[lista[i - 1]].corto}</button>` : "") +
-      (lista && i < lista.length - 1 ? `<button class="enlace-ej" data-ir-esp="${lista[i + 1]}">${C.MODULOS[lista[i + 1]].corto} ▶</button>` : esp === "fundamentos" ? `<button class="enlace-ej" data-ir-esp="estadisticos">Usar los estadísticos ▶</button>` : "") + `</span>`;
+      (lista && i < lista.length - 1 ? `<button class="enlace-ej" data-ir-esp="${lista[i + 1]}">${C.MODULOS[lista[i + 1]].corto} ▶</button>` : esp === "fundamentos" ? `<button class="enlace-ej" data-ir-esp="estadisticos">Usar los estadísticos ▶</button>` : esp === "descriptiva" ? `<button class="enlace-ej" data-ir-esp="tema4">Tema 4 ▶</button>` : "") + `</span>`;
     sec.prepend(migas);
     migas.querySelectorAll("[data-ir-esp]").forEach(b => b.addEventListener("click", () => App.irA(b.dataset.irEsp)));
     const ex = document.createElement("div"); ex.className = "paso-mod"; ex.dataset.paso = "explica"; ex.innerHTML = `<div class="explica-cont"></div>`;
     const pr = document.createElement("div"); pr.className = "paso-mod"; pr.dataset.paso = "practica";
     pr.innerHTML = `<div class="practica-layout"><div class="practica-ej"></div><aside class="practica-tutor"><div class="tutor-mini"></div><div class="progreso-mod"></div></aside></div>`;
     barra.after(ex); sec.append(pr);
+    if (tieneProf) { const pf = document.createElement("div"); pf.className = "paso-mod"; pf.dataset.paso = "profundiza"; sec.append(pf); }
     barra.querySelectorAll("button").forEach(b => b.addEventListener("click", () => irPaso(mod, b.dataset.p)));
   }
 
@@ -295,6 +299,7 @@
     if (paso === "explica") pintarExplica(mod);
     if (paso === "practica") pintarPractica(mod, setId);
     if (paso === "explora") App.redibujar();
+    if (paso === "profundiza") { const pf = sec.querySelector('[data-paso="profundiza"]'); if (!pf.dataset.pintado) { window.Profundiza.pintar(mod, pf); pf.dataset.pintado = "1"; } }
     actualizarCuentas();
   }
 
@@ -372,8 +377,8 @@
   function pintarInicio() {
     const p = perfil(); if (!p) return;
     const cont = $("bienvenida");
-    dialogo(cont, C.BIENVENIDA, `<button class="btn peq" data-empezar>Empezar por Fundamentos ▶</button>`, {
-      alFinal: v => v.pie.querySelector("[data-empezar]").addEventListener("click", e => { e.stopPropagation(); App.irA("fundamentos"); })
+    dialogo(cont, C.BIENVENIDA, `<button class="btn peq" data-empezar="tema3">Tema 3 ▶</button><button class="btn peq contorno" data-empezar="tema4">Tema 4 ▶</button>`, {
+      alFinal: v => v.pie.querySelectorAll("[data-empezar]").forEach(b => b.addEventListener("click", e => { e.stopPropagation(); App.irA(b.dataset.empezar); }))
     });
     pintarEspaciosInicio();
   }
@@ -390,7 +395,7 @@
     ov.classList.remove("oculto");
     ov.innerHTML = `<div class="entrada-caja" role="dialog" aria-modal="true" aria-labelledby="entradaTit">
       <img src="img/Logo_ufv.png" alt="UFV" class="entrada-logo">
-      <h2 id="entradaTit">Tema 4 · Análisis inferencial</h2>
+      <h2 id="entradaTit">Faro estadístico · Temas 3 y 4</h2>
       <p>Escribe tu nombre y elige tu grupo. Tu progreso se guarda solo en este navegador.</p>
       ${lista.length ? `<div class="perfiles"><span class="small gris">Continuar como:</span>${lista.map(([id, p]) => `<button class="chip" data-perfil="${esc(id)}">${esc(p.nombre)} · ${p.grupo}</button>`).join("")}</div><hr>` : ""}
       <label class="control"><span class="etiqueta">Tu nombre</span><input type="text" id="entNombre" maxlength="60" autocomplete="given-name" placeholder="Nombre y apellido"></label>
@@ -424,6 +429,7 @@
     Object.keys(vinetasPractica).forEach(k => delete vinetasPractica[k]);
     pintarUsuario();
     App.irA("inicio");
+    if (window.FaroTutorial) window.FaroTutorial.abrirSiNuevo();
   }
 
   // ------------------------------------------------------------------
@@ -462,7 +468,7 @@
       <h3 class="seccion-c">Mapa de conceptos</h3>
       <div class="mapa-conceptos">${Object.entries(C.CONCEPTOS).sort((a, b) => { const A = dom[a[0]], B = dom[b[0]]; return (A.n ? A.pct : 2) - (B.n ? B.pct : 2); }).map(([k, c]) => { const o = dom[k]; return `<div class="concepto"><span class="c-nom">${c.nombre}</span><div class="barra-prog ${o.nivel}"><i style="width:${o.n ? Math.max(3, 100 * o.pct) : 0}%"></i></div><span class="nivel ${o.nivel}">${NIVEL[o.nivel]}</span><span class="c-det small gris">${o.n ? `${o.primero}/${o.n} a la primera` : ""}</span></div>`; }).join("")}</div>
       <h3 class="seccion-c">Progreso por módulo</h3>
-      <div class="tabla-scroll"><table class="t-ufv"><tr><th>Módulo</th><th>Resueltos</th><th>A la primera</th><th></th></tr>${[...MODULOS_ORDEN, "repaso"].map(m => { const es = todosEjercicios(m), h = es.filter(e => registro(e.id)), pr = h.filter(e => registro(e.id).res === "primero"); return `<tr><td class="fila">${C.MODULOS[m].titulo}</td><td>${h.length} de ${es.length}</td><td>${h.length ? pr.length + " de " + h.length : "—"}</td><td><button class="enlace-ej" data-practicar="${m}">${h.length === es.length ? "Repasar" : "Continuar"}</button></td></tr>`; }).join("")}</table></div>
+      <div class="tabla-scroll"><table class="t-ufv"><tr><th>Módulo</th><th>Resueltos</th><th>A la primera</th><th></th></tr>${[...MODULOS_ORDEN, "repaso"].map(m => (m === "variables" ? `<tr class="t-tema"><td colspan="4">Tema 3 · Estadística descriptiva</td></tr>` : m === "muestras" ? `<tr class="t-tema"><td colspan="4">Tema 4 · Estadística inferencial</td></tr>` : "") + (() => { const es = todosEjercicios(m), h = es.filter(e => registro(e.id)), pr = h.filter(e => registro(e.id).res === "primero"); return `<tr><td class="fila">${C.MODULOS[m].titulo}</td><td>${h.length} de ${es.length}</td><td>${h.length ? pr.length + " de " + h.length : "—"}</td><td><button class="enlace-ej" data-practicar="${m}">${h.length === es.length ? "Repasar" : "Continuar"}</button></td></tr>`; })()).join("")}</table></div>
       <p class="contacto">¿Dudas? Escribe a tu ${tx("{profe}")}: <a href="mailto:${d.email}">${d.email}</a></p>
       <div class="acciones-cuaderno no-imprimir">
         <button class="btn peq" id="cuImprimir">Imprimir o guardar en PDF</button>
@@ -500,10 +506,18 @@
   // Espacios: Fundamentos y Usar los estadísticos
   // ------------------------------------------------------------------
   const ESPACIOS = {
+    descriptiva: { titulo: "Tema 3 · Descriptiva", mods: ["variables", "central", "posicion", "dispersion", "forma", "graficos", "repaso3"], desc: "Describir y resumir los datos de la muestra." },
     fundamentos: { titulo: "Fundamentos", mods: ["muestras", "intervalos", "juicio", "supuestos"], desc: "Las ideas que sostienen la inferencia." },
     estadisticos: { titulo: "Usar los estadísticos", mods: ["esquema", "chi", "correlaciones", "independientes", "relacionadas"], desc: "Elegir la prueba y aplicarla a casos de Psicología." }
   };
   const PREGUNTA = {
+    variables: "¿Qué tipo de dato es? Frecuencias y tablas de contingencia.",
+    central: "Media, mediana y moda: ¿qué es lo «normal» en el grupo?",
+    posicion: "Cuartiles y percentiles: ¿en qué lugar del ranking estás?",
+    dispersion: "Rango y desviación típica: misma media, distinta historia.",
+    forma: "Asimetría, curtosis, curva normal y puntuaciones z.",
+    graficos: "Elige el gráfico adecuado y caza el gráfico tramposo.",
+    repaso3: "El titular de las apuestas y preguntas mezcladas del Tema 3.",
     muestras: "¿Por qué cada muestra da un resultado distinto?",
     intervalos: "¿Cómo estimamos la media de la población? ¿De dónde sale el 1,96?",
     juicio: "La lógica del contraste de hipótesis: H₀, α, el valor p y el veredicto.",
@@ -531,23 +545,48 @@
     });
   }
 
-  function pintarEspaciosInicio() {
-    const cont = $("espaciosInicio"); if (!cont) return;
-    const total = mods => mods.reduce((a, m) => { const p = progresoMod(m); a.h += p.h; a.t += p.t; return a; }, { h: 0, t: 0 });
-    const tarjeta = (k, clase) => { const E = ESPACIOS[k], t = total(E.mods); return `<article class="espacio ${clase}" data-ir-esp="${k}" tabindex="0" role="button">
-        <span class="eti-espacio">${k === "fundamentos" ? "Espacio 1" : "Espacio 2"}</span><h2>${E.titulo}</h2><p>${E.desc}</p>
-        <ul>${E.mods.map(m => `<li>${C.MODULOS[m].titulo.split(" · ")[1]}</li>`).join("")}</ul>${barra(t.h, t.t)}<span class="parada-ir">Entrar →</span></article>`; };
-    const rp = progresoMod("repaso");
-    cont.innerHTML = `<div class="rejilla c2">${tarjeta("fundamentos", "esp-azul")}${tarjeta("estadisticos", "esp-arena")}</div>
-      <div class="rejilla c2"><article class="espacio mini" data-ir-esp="repaso" tabindex="0" role="button"><h3>Repaso final</h3><p>Preguntas mezcladas de todo el tema para antes del examen.</p>${barra(rp.h, rp.t)}</article>
-      <article class="espacio mini" data-ir-esp="cuaderno" tabindex="0" role="button"><h3>Mi cuaderno</h3><p>Lo que ya dominas y lo que te conviene repasar.</p></article></div>
-      ${C.GEM ? `<button type="button" class="espacio gem-tarjeta" id="antonioTarjeta" style="text-align:left;width:100%;cursor:pointer"><span class="gem-ico"><img src="img/antonio-ia.jpg" alt="Ilustración de Antonio IA, homenaje al profesor Antonio Pardo Merino" loading="lazy"></span><div><span class="eti-espacio">Tutor con IA · Gemini UFV</span><h3>${esc(C.GEM.nombre)}</h3><p>Si te atascas, ${esc(C.GEM.nombre)} te ayuda a razonar con preguntas, sin darte la solución hecha. En cada ejercicio tienes el botón <b>«Pregúntale a ${esc(C.GEM.nombre)}»</b>, que comparte el contexto de tu ejercicio automáticamente. Se abre aquí, sin salir de Faro. Es un homenaje a Antonio Pardo Merino.</p></div><span class="parada-ir">Abrir →</span></button>` : ""}`;
-    const antonioTarjeta = cont.querySelector('#antonioTarjeta');
-    if (antonioTarjeta) antonioTarjeta.addEventListener('click', () => window.AntonioIA?.abrir({}));
+  const totalMods = mods => mods.reduce((a, m) => { const p = progresoMod(m); a.h += p.h; a.t += p.t; return a; }, { h: 0, t: 0 });
+  function activarIr(cont) {
     cont.querySelectorAll("[data-ir-esp]").forEach(el => {
       const ir = () => App.irA(el.dataset.irEsp);
       el.addEventListener("click", ir); el.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ir(); } });
     });
+  }
+  // Inicio: elegir tema
+  function pintarEspaciosInicio() {
+    const cont = $("espaciosInicio"); if (!cont) return;
+    const t3 = totalMods(ESPACIOS.descriptiva.mods), t4 = totalMods(ESPACIOS.fundamentos.mods.concat(ESPACIOS.estadisticos.mods, ["repaso"]));
+    cont.innerHTML = `<h2 class="elige-tema">¿Qué quieres trabajar hoy?</h2>
+      <div class="rejilla c2 temas-elegir">
+        <article class="espacio tema-card tema3-card" data-ir-esp="tema3" tabindex="0" role="button">
+          <span class="eti-espacio">Tema 3</span><h2>Estadística descriptiva</h2>
+          <p><b>¿Para qué sirve?</b> Para describir y resumir los datos de tu muestra: qué es lo típico, cuánto varían las personas, qué forma tienen las respuestas y cómo representarlas.</p>
+          <ul>${ESPACIOS.descriptiva.mods.filter(m => m !== "repaso3").map(m => `<li>${C.MODULOS[m].corto}</li>`).join("")}</ul>${barra(t3.h, t3.t)}<span class="parada-ir">Entrar en el Tema 3 →</span></article>
+        <article class="espacio tema-card tema4-card" data-ir-esp="tema4" tabindex="0" role="button">
+          <span class="eti-espacio">Tema 4</span><h2>Estadística inferencial</h2>
+          <p><b>¿Para qué sirve?</b> Para ir de la muestra a la población: estimar con un margen de error, contrastar hipótesis y elegir la prueba adecuada para cada pregunta de investigación.</p>
+          <ul><li>Fundamentos</li><li>Usar los estadísticos</li><li>Repaso final</li></ul>${barra(t4.h, t4.t)}<span class="parada-ir">Entrar en el Tema 4 →</span></article>
+      </div>
+      <div class="rejilla c2"><article class="espacio mini" data-ir-esp="cuaderno" tabindex="0" role="button"><h3>Mi cuaderno</h3><p>Lo que ya dominas y lo que te conviene repasar, de los dos temas.</p></article>
+      ${C.GEM ? `<button type="button" class="espacio mini gem-tarjeta" id="antonioTarjeta" style="text-align:left;width:100%;cursor:pointer"><span class="gem-ico"><img src="img/antonio-ia.jpg" alt="Ilustración de Antonio IA, homenaje al profesor Antonio Pardo Merino" loading="lazy"></span><div><span class="eti-espacio">Tutor con IA</span><h3>${esc(C.GEM.nombre)}</h3><p>Si te atascas, te ayuda a razonar con preguntas, sin darte la solución hecha.</p></div></button>` : ""}</div>`;
+    const antonioTarjeta = cont.querySelector('#antonioTarjeta');
+    if (antonioTarjeta) antonioTarjeta.addEventListener('click', () => window.AntonioIA?.abrir({}));
+    activarIr(cont);
+  }
+  // Portadas de cada tema
+  function pintarTema3() {
+    const c = $("rutaT3"); c.innerHTML = `<div class="ruta-paradas">${tarjetasRuta(ESPACIOS.descriptiva.mods)}</div>`; activarTarjetas(c);
+  }
+  function pintarTema4() {
+    const cont = $("espaciosT4"); if (!cont) return;
+    const tarjeta = (k, clase, eti) => { const E = ESPACIOS[k], t = totalMods(E.mods); return `<article class="espacio ${clase}" data-ir-esp="${k}" tabindex="0" role="button">
+        <span class="eti-espacio">${eti}</span><h2>${E.titulo}</h2><p>${E.desc}</p>
+        <ul>${E.mods.map(m => `<li>${C.MODULOS[m].titulo.split(" · ")[1]}</li>`).join("")}</ul>${barra(t.h, t.t)}<span class="parada-ir">Entrar →</span></article>`; };
+    const rp = progresoMod("repaso");
+    cont.innerHTML = `<div class="rejilla c2">${tarjeta("fundamentos", "esp-azul", "Espacio 1")}${tarjeta("estadisticos", "esp-arena", "Espacio 2")}</div>
+      <div class="rejilla c2"><article class="espacio mini" data-ir-esp="repaso" tabindex="0" role="button"><h3>Repaso final</h3><p>Preguntas mezcladas de todo el Tema 4 para antes del examen.</p>${barra(rp.h, rp.t)}</article>
+      <article class="espacio mini" data-ir-esp="tema3" tabindex="0" role="button"><h3>¿Necesitas repasar el Tema 3?</h3><p>La curva normal, las puntuaciones z y la desviación típica son la base de la inferencia.</p></article></div>`;
+    activarIr(cont);
   }
 
   function pintarFundamentos() {
@@ -624,10 +663,12 @@
     if (tab === "inicio") pintarInicio();
     else if (tab === "cuaderno") pintarCuaderno();
     else if (tab === "fundamentos") pintarFundamentos();
+    else if (tab === "tema3") pintarTema3();
+    else if (tab === "tema4") pintarTema4();
     else if (tab === "estadisticos") pintarEstadisticos();
     else if (C.MODULOS[tab]) {
       const p = perfil(), visto = p.vistos && p.vistos[tab];
-      irPaso(tab, sub || pasoActual[tab] || (visto ? (tab === "repaso" ? "practica" : "explora") : "explica"), setId);
+      irPaso(tab, sub || pasoActual[tab] || (visto ? (tab === "repaso" || tab === "repaso3" ? "practica" : "explora") : "explica"), setId);
     }
   };
 

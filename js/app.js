@@ -50,13 +50,16 @@
   const render = {};
   const App = window.App = { render };
   // Cada módulo pertenece a uno de los dos espacios de la barra superior
-  App.ESPACIO = { muestras: "fundamentos", intervalos: "fundamentos", juicio: "fundamentos", supuestos: "fundamentos", esquema: "estadisticos", chi: "estadisticos", correlaciones: "estadisticos", independientes: "estadisticos", relacionadas: "estadisticos" };
+  App.ESPACIO = { muestras: "fundamentos", intervalos: "fundamentos", juicio: "fundamentos", supuestos: "fundamentos", esquema: "estadisticos", chi: "estadisticos", correlaciones: "estadisticos", independientes: "estadisticos", relacionadas: "estadisticos",
+    variables: "descriptiva", central: "descriptiva", posicion: "descriptiva", dispersion: "descriptiva", forma: "descriptiva", graficos: "descriptiva", repaso3: "descriptiva" };
+  // Cada espacio pertenece a un tema (para resaltar la barra superior)
+  App.TEMA = { descriptiva: "tema3", fundamentos: "tema4", estadisticos: "tema4", repaso: "tema4" };
   function irA(tab, sub, setId) {
     if (!document.getElementById("tab-" + tab)) tab = "inicio";
     pestanaActual = tab;
     document.querySelectorAll(".pestana").forEach(s => s.classList.toggle("activa", s.id === "tab-" + tab));
-    const espacio = App.ESPACIO[tab] || tab;
-    document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("activo", b.dataset.tab === espacio));
+    const espacio = App.ESPACIO[tab] || tab, tema = App.TEMA[espacio] || espacio;
+    document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("activo", b.dataset.tab === tema));
     $("nav").classList.remove("abierta");
     if (history.replaceState) history.replaceState(null, "", "#" + tab);
     window.scrollTo({ top: 0 });

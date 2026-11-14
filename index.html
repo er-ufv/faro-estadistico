@@ -3,27 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Faro estadístico · Tema 4 · UFV</title>
-  <meta name="description" content="Faro estadístico: recurso interactivo del Tema 4 (Análisis inferencial de los datos) de Fundamentos de Investigación en Psicología, UFV.">
+  <title>Faro estadístico · Temas 3 y 4 · UFV</title>
+  <meta name="description" content="Faro estadístico: recurso interactivo de los Temas 3 (estadística descriptiva) y 4 (análisis inferencial) de Fundamentos de Investigación en Psicología, UFV.">
   <link rel="icon" href="img/faro.svg">
   <link rel="stylesheet" href="css/estilos.css">
 <link rel="stylesheet" href="vendor/katex/katex.min.css">
 <link rel="stylesheet" href="css/antonio-chat.css">
+<link rel="stylesheet" href="css/profundiza.css?v=4">
+<link rel="stylesheet" href="css/tema3.css?v=4">
 </head>
 <body>
 
 <header class="barra">
   <a class="marca" href="#inicio" data-ir="inicio">
     <svg class="faro-ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M24 10.6 39 5.5v11.6L24 12.8z" fill="#F2C14E" opacity=".55"/><path d="M16 10.6 1 5.5v11.6l15-4.3z" fill="#F2C14E" opacity=".3"/><path d="M18 6.6 20 4l2 2.6V8.4h-4z" fill="#003865"/><rect x="16" y="8.4" width="8" height="5" rx="1.2" fill="#003865"/><circle cx="20" cy="10.9" r="1.7" fill="#F2C14E"/><path d="M16.8 13.4h6.4l2.2 20.6H14.6z" fill="#003865"/><path d="M15.9 21.6h8.2l.45 4.2h-9.1z" fill="#E5254B"/><rect x="12.5" y="34" width="15" height="2.2" rx="1.1" fill="#003865"/></svg>
-    <span class="marca-textos"><span class="marca-nombre">Faro estadístico</span><span class="marca-sub">Tema 4 · Análisis inferencial</span></span>
+    <span class="marca-textos"><span class="marca-nombre">Faro estadístico</span><span class="marca-sub">Temas 3 y 4 · Análisis de datos</span></span>
   </a>
   <button class="menu-movil" id="menuMovil" aria-label="Abrir menú">☰</button>
   <nav class="nav" id="nav">
     <button data-tab="inicio" class="activo">Inicio</button>
-    <button data-tab="fundamentos">Fundamentos</button>
-    <button data-tab="estadisticos">Usar los estadísticos</button>
-    <button data-tab="repaso">Repaso</button>
+    <button data-tab="tema3">Tema 3 · Descriptiva</button>
+    <button data-tab="tema4">Tema 4 · Inferencial</button>
     <button data-tab="cuaderno" class="nav-cuaderno">Mi cuaderno</button>
+    <a class="nav-enlace nav-ayuda" href="#" data-tutorial title="Cómo usar Faro">❓ Tutorial</a>
     <a id="navGem" class="nav-gem" href="#antonio-ia" title="Abre Antonio IA dentro de Faro">💬 Antonio IA</a>
   </nav>
   <div id="usuario" class="usuario"></div>
@@ -34,13 +36,44 @@
 <!-- ================================================================ INICIO -->
 <section class="pestana activa" id="tab-inicio">
   <div class="hero hero-faro">
-    <span class="eti-banner">Tema 4 · Análisis inferencial de los datos</span>
+    <span class="eti-banner">Temas 3 y 4 · Análisis de datos</span>
     <h1>Faro estadístico</h1>
-    <p>De la muestra a la población: una guía para entender y usar la inferencia en Psicología.</p>
+    <p>De los datos a las conclusiones: una guía para describir lo que dicen tus datos y generalizar a la población en Psicología.</p>
   </div>
   <div id="bienvenida" class="vineta-grande"></div>
   <div id="espaciosInicio"></div>
-  <div class="caja clave"><b>Cómo usar Faro.</b> Empieza por <b>Fundamentos</b>: las ideas que sostienen la inferencia. Después pasa a <b>Usar los estadísticos</b>, donde el esquema de decisión te lleva a cada prueba. En cada módulo, tu docente te explica la idea clave, exploras una simulación y practicas. Todos los datos son <b>simulados</b> con fines docentes.</div>
+  <div class="caja clave"><b>Cómo usar Faro.</b> Si es tu primera vez, abre el <a href="#" data-tutorial><b>tutorial</b></a>. Elige el tema que quieras trabajar: en cada módulo, tu docente te explica la idea clave, exploras una simulación, practicas y, si quieres ver de dónde sale cada número, entras en <b>Para profundizar</b>. Todos los datos son <b>simulados</b> con fines docentes.</div>
+</section>
+
+<!-- ================================================================ TEMA 3 · PORTADA -->
+<section class="pestana" id="tab-tema3">
+  <div class="hero banner-espacio banner-t3">
+    <span class="eti-banner">Tema 3</span>
+    <h1>Estadística descriptiva</h1>
+    <p>Describir y resumir lo que dicen tus datos: qué es lo típico, cuánto varían las personas y qué forma tienen las respuestas.</p>
+  </div>
+  <div class="rejilla c3 para-que">
+    <div class="caja clave"><b>¿Para qué sirve?</b> Antes de sacar conclusiones sobre una población hay que conocer bien la muestra. La estadística descriptiva <b>resume y representa</b> los datos que has recogido.</div>
+    <div class="caja clave"><b>¿Qué aprenderás?</b> Tipos de variables, frecuencias, media, mediana y moda, percentiles, desviación típica, forma de la distribución, puntuaciones z y gráficos.</div>
+    <div class="caja clave"><b>¿Y después?</b> Todo esto es la base del Tema 4: la curva normal, las puntuaciones z y la desviación típica reaparecen en la inferencia.</div>
+  </div>
+  <div id="rutaT3" class="ruta"></div>
+  <div class="caja t3-datos"><b>Los datos de la clase simulada.</b> 120 estudiantes ficticios de 1.º, inspirados en encuestas sobre jóvenes en España (INJUVE 2024, Barómetro Juventud y Género 2025). No son datos reales. <button type="button" class="btn peq contorno" data-t3-csv>Descargar el CSV para jamovi o SPSS</button></div>
+</section>
+
+<!-- ================================================================ TEMA 4 · PORTADA -->
+<section class="pestana" id="tab-tema4">
+  <div class="hero banner-espacio">
+    <span class="eti-banner">Tema 4</span>
+    <h1>Estadística inferencial</h1>
+    <p>De la muestra a la población: estimar parámetros, contrastar hipótesis y elegir la prueba adecuada para cada pregunta de investigación.</p>
+  </div>
+  <div class="rejilla c3 para-que">
+    <div class="caja clave"><b>¿Para qué sirve?</b> Casi nunca podemos evaluar a toda la población. La inferencia nos permite <b>generalizar</b> desde una muestra y decidir si un resultado puede deberse al azar.</div>
+    <div class="caja clave"><b>¿Qué aprenderás?</b> Error típico, intervalos de confianza, contraste de hipótesis y valor p, supuestos y las pruebas de 1.º: χ², correlaciones, t de Student, U de Mann-Whitney y Wilcoxon.</div>
+    <div class="caja clave"><b>¿Cómo se organiza?</b> Primero <b>Fundamentos</b> (la lógica de la inferencia) y después <b>Usar los estadísticos</b> (elegir y aplicar cada prueba).</div>
+  </div>
+  <div id="espaciosT4"></div>
 </section>
 
 <!-- ================================================================ ESPACIO 1 · FUNDAMENTOS -->
@@ -571,6 +604,283 @@
 </section>
 
 <!-- ================================================================ REPASO -->
+<!-- ================================================================ T3 · 1 VARIABLES -->
+<section class="pestana" id="tab-variables">
+<div class="paso-mod" data-paso="explora">
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="t3v">
+      <button data-sub="t3-frec" class="activo">Tabla de frecuencias</button>
+      <button data-sub="t3-cont">Tabla de contingencia</button>
+    </div>
+    <div class="subpestana activa" id="t3-frec">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <div class="control"><label for="t3Var">Variable</label>
+            <select id="t3Var"><option value="red_favorita">Red social favorita</option><option value="genero_musical">Género musical favorito</option><option value="ansiedad_examenes">Ansiedad ante los exámenes</option><option value="relacion_preferida">Modelo de relación preferido</option></select></div>
+          <label class="check"><input type="checkbox" id="t3Acum"> Mostrar frecuencias acumuladas (Fi y Ni)</label>
+          <div id="t3Aviso" aria-live="polite"></div>
+          <div class="caja reto"><b>Prueba esto:</b> activa las acumuladas con la ansiedad y después con la red social. ¿Por qué solo tienen sentido en una de las dos?</div>
+          <button type="button" class="btn contorno peq" data-t3-csv>Descargar los datos (CSV)</button>
+        </aside>
+        <div class="principal">
+          <div class="caja clave"><b>Idea clave.</b> <b>fi</b> es cuántas personas hay en cada categoría y <b>ni</b> qué porcentaje suponen sobre el total (n = 120). Las acumuladas (Fi, Ni) van sumando fila a fila.</div>
+          <div class="tabla-scroll" id="t3Tabla"></div>
+          <div id="t3Barras"></div>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="t3-cont">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <div class="control"><label for="t3Cruce">Tabla</label>
+            <select id="t3Cruce"><option value="rel">Modelo de relación preferido × sexo</option><option value="ans">Ansiedad ante los exámenes × estudia y trabaja</option></select></div>
+          <div class="control"><label for="t3Pct">Mostrar</label>
+            <select id="t3Pct"><option value="rec">Recuentos</option><option value="col">% por columna (dentro de cada grupo)</option><option value="fila">% por fila</option><option value="total">% del total</option></select></div>
+          <div class="caja reto"><b>Prueba esto:</b> en la tabla por sexo, compara los recuentos con el % por columna. ¿Por qué con recuentos las mujeres «ganan» en casi todo?</div>
+          <p class="small gris">SPSS: Analizar › Estadísticos descriptivos › Tablas cruzadas › Casillas. jamovi: Análisis › Frecuencias › Muestras independientes.</p>
+        </aside>
+        <div class="principal">
+          <div class="caja clave"><b>Idea clave.</b> Para comparar grupos de distinto tamaño, calcula el porcentaje <b>dentro</b> de cada grupo y da siempre el n. Un porcentaje describe a un grupo, no a cada persona.</div>
+          <div class="tabla-scroll" id="t3Conting"></div>
+          <div class="tarjeta"><h4>¿Y en la población real?</h4><div class="cuerpo"><p>En el <em>Barómetro Juventud y Género 2025</em> (Fad Juventud, jóvenes de 15 a 29 años en España), prefiere una pareja monógama el <b>77,5 %</b> de las mujeres y el <b>63,1 %</b> de los hombres, y menos del 8 % prefiere otros modelos.</p><p class="small gris">Una muestra pequeña, como una clase, puede alejarse del dato poblacional solo por azar.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ T3 · 2 TENDENCIA CENTRAL -->
+<section class="pestana" id="tab-central">
+<div class="paso-mod" data-paso="explora">
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="t3c">
+      <button data-sub="t3-tk" class="activo">El balancín</button>
+      <button data-sub="t3-gl">La amiga del glamping</button>
+      <button data-sub="t3-sesgo">La cola tira de la media</button>
+      <button data-sub="t3-ord">Con categorías</button>
+    </div>
+    <div class="subpestana activa" id="t3-tk">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Minutos en TikTok ayer de 6 amigas. Mueve los deslizadores.</p>
+          <div id="t3TkSliders"></div>
+          <div class="control"><span class="etiqueta">Reto</span><div class="radios vertical">
+            <label><input type="radio" name="t3Reto" value="a" checked> A: que la media y la mediana valgan lo mismo</label>
+            <label><input type="radio" name="t3Reto" value="b"> B: media mayor que 100 min con mediana menor que 50 min</label>
+            <label><input type="radio" name="t3Reto" value="c"> C: que haya dos modas</label></div></div>
+          <button type="button" class="btn enlace" id="t3TkReset">Volver a los datos originales</button>
+        </aside>
+        <div class="principal">
+          <div class="caja clave"><b>Idea clave.</b> La media es el <b>punto de equilibrio</b> (▲): si una pesa se aleja, el triángulo tiene que moverse para que el balancín no caiga. La mediana solo mira quién queda en el medio de la fila.</div>
+          <div id="t3TkPlot"></div>
+          <p class="leyenda-t3"><span class="lm">Media (▲ equilibrio)</span><span class="lmd">Mediana</span><span class="lmo">Mo = moda</span></p>
+          <p id="t3TkStats"></p>
+          <div id="t3TkReto" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="t3-gl">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Diez amigas comparan lo que gastaron en su último festival. Nueve gastaron entre 80 y 140 €. ¿Y si la décima se compra la entrada VIP y el glamping?</p>
+          <div class="caja reto"><b>Antes de mover nada, predice:</b> si la décima amiga gasta muchísimo más, ¿qué medida cambiará más: la media, la mediana o la moda?</div>
+          <div class="control"><label for="t3Ext">Gasto de la décima amiga <b><span id="t3ExtVal">150</span> €</b></label><input type="range" id="t3Ext" min="140" max="2000" step="10" value="150"></div>
+        </aside>
+        <div class="principal">
+          <div id="t3GlPlot"></div>
+          <p class="leyenda-t3"><span class="lm">Media (▲ equilibrio)</span><span class="lmd">Mediana</span><span class="lmo">Mo = moda</span></p>
+          <p id="t3GlStats"></p>
+          <div id="t3GlFb" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="t3-sesgo">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Notas de 200 estudiantes en un examen (0 a 100). Las notas son inventadas para mostrar la idea.</p>
+          <div class="control"><label for="t3S">Dificultad del examen <b id="t3SVal"></b></label><input type="range" id="t3S" min="-1" max="1" step="0.1" value="0">
+            <div class="extremos-t3"><span>← Muy fácil</span><span>Muy difícil →</span></div></div>
+          <div class="caja reto"><b>Prueba esto:</b> haz el examen muy difícil. ¿En qué orden quedan moda, mediana y media? ¿Y si es muy fácil?</div>
+        </aside>
+        <div class="principal">
+          <div id="t3SPlot"></div>
+          <p class="leyenda-t3"><span class="lm">Media</span><span class="lmd">Mediana</span><span class="lmo">Moda (barra más alta)</span></p>
+          <p id="t3SStats"></p>
+          <p class="small gris">En el módulo 5 verás que esta «cola» se llama <b>asimetría</b>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="t3-ord">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Pon a toda la clase en fila, de «nada» a «mucho» de ansiedad. Cambia cuántas personas hay en cada categoría.</p>
+          <div id="t3OrdSliders"></div>
+        </aside>
+        <div class="principal">
+          <div class="caja clave"><b>Idea clave.</b> Con categorías ordenadas (ordinal) la mediana es la categoría de la persona que queda en el medio. Con categorías sin orden (nominal), solo la moda.</div>
+          <div id="t3OrdPlot"></div>
+          <div id="t3OrdTxt" aria-live="polite"></div>
+          <div class="tarjeta"><h4>Sin orden: género musical favorito (la barra más larga es la moda)</h4><div class="cuerpo"><div id="t3ModaPlot"></div><p class="small gris">No tiene sentido hablar de un «género musical medio»: no se pueden sumar «pop» y «rock».</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ T3 · 3 POSICIÓN -->
+<section class="pestana" id="tab-posicion">
+<div class="paso-mod" data-paso="explora">
+  <div class="con-lateral">
+    <aside class="lateral">
+      <h3>¿En qué percentil estás?</h3>
+      <div class="control"><label for="t3PVar">Variable</label><select id="t3PVar"></select></div>
+      <div class="control"><label for="t3PVal">Tu valor (no se guarda)</label><input type="text" inputmode="decimal" id="t3PVal" class="campo-t3"></div>
+      <div id="t3PTexto" aria-live="polite"></div>
+      <div class="caja reto"><b>Prueba esto:</b> busca tu percentil en horas de móvil y en horas de sueño. ¿Un percentil alto es siempre «bueno»?</div>
+    </aside>
+    <div class="principal">
+      <div class="caja clave"><b>Idea clave.</b> Un percentil es tu <b>posición relativa</b> en el grupo: en el P80, tu valor es igual o superior al de ≈80 % de la clase. Q1 = P25, Q2 = P50 (mediana) y Q3 = P75.</div>
+      <div id="t3PBox"></div>
+      <p id="t3PCuart"></p>
+      <p class="small gris">Cómo leer el diagrama de caja: la línea gruesa es la mediana; la caja contiene al 50 % central (de Q1 a Q3); los bigotes llegan hasta los valores más extremos que no son atípicos, y los puntos sueltos son <b>valores atípicos</b> (muy alejados del resto; no tienen por qué ser errores). Cada programa calcula los percentiles de forma ligeramente distinta.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ T3 · 4 DISPERSIÓN -->
+<section class="pestana" id="tab-dispersion">
+<div class="paso-mod" data-paso="explora">
+  <div class="con-lateral">
+    <aside class="lateral">
+      <h3>Construye tu grupo</h3>
+      <p class="small">Horas de redes ayer de 6 amigos inventados. La gráfica y los estadísticos se actualizan al momento.</p>
+      <div class="fila-num-t3" id="t3DInputs"></div>
+      <p class="small"><b>Carga un ejemplo:</b> <button type="button" class="enlace-ej" data-t3-grupo="A">Grupo A</button> · <button type="button" class="enlace-ej" data-t3-grupo="B">Grupo B</button> (los dos con media 3 h)</p>
+      <div class="control"><span class="etiqueta">Reto</span><div class="radios vertical">
+        <label><input type="radio" name="t3DReto" value="r1" checked> 1: media = 3 h y DT = 0</label>
+        <label><input type="radio" name="t3DReto" value="r2"> 2: media = 3 h y DT mayor que 2,5 h (grupo polarizado)</label>
+        <label><input type="radio" name="t3DReto" value="r3"> 3: media = 3 h, rango = 6 h y DT menor que 1,8 h</label></div></div>
+    </aside>
+    <div class="principal">
+      <div class="caja clave"><b>Idea clave.</b> Misma media, distinta historia. El <b>rango</b> solo usa los dos extremos; la <b>desviación típica</b> usa todos los datos y se expresa en las mismas unidades (horas).</div>
+      <div id="t3DPlot"></div>
+      <div class="tabla-scroll" id="t3DTabla"></div>
+      <div id="t3DEstado" aria-live="polite"></div>
+      <p class="small gris">En clase dividimos entre N (fórmula poblacional). SPSS y jamovi suponen que los datos son una muestra y dividen entre n − 1: por eso su DT es algo mayor.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ T3 · 5 FORMA -->
+<section class="pestana" id="tab-forma">
+<div class="paso-mod" data-paso="explora">
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="t3f">
+      <button data-sub="t3-fest" class="activo">¿Cuántos superan la media?</button>
+      <button data-sub="t3-forma">Adivina la forma</button>
+      <button data-sub="t3-normal">Curva normal y z</button>
+    </div>
+    <div class="subpestana activa" id="t3-fest">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">La <b>media</b> de lo que cada estudiante de la clase se gastó en festivales el último año es de <b><span id="t3MediaFest"></span> €</b>.</p>
+          <div class="control"><label for="t3PredF">¿Qué porcentaje de la clase crees que gastó <b>más</b> que la media? <b id="t3PredFVal">50 %</b></label><input type="range" id="t3PredF" min="0" max="100" value="50" step="1"></div>
+          <button type="button" class="btn" id="t3GuardarPred">Comprobar mi predicción</button>
+        </aside>
+        <div class="principal">
+          <div id="t3FRes" aria-live="polite"><p class="small gris">Haz tu predicción a la izquierda.</p></div>
+          <div class="oculto"><div id="t3FHist"></div><p class="leyenda-t3"><span class="lm">Media</span><span class="lmd">Mediana</span></p>
+          <div class="caja clave"><b>Para llevarte:</b> con cola a la derecha (asimetría positiva), la media se va hacia la cola y queda por encima de la mediana.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="t3-forma">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <div class="control"><label for="t3FoVar">Variable</label><select id="t3FoVar"></select></div>
+          <p class="small gris" id="t3FoDesc"></p>
+          <div class="control"><span class="etiqueta">¿Qué asimetría esperas?</span><div class="radios vertical">
+            <label><input type="radio" name="t3FoPred" value="pos"> Positiva (cola a la derecha)</label>
+            <label><input type="radio" name="t3FoPred" value="sim"> Aproximadamente simétrica</label>
+            <label><input type="radio" name="t3FoPred" value="neg"> Negativa (cola a la izquierda)</label></div></div>
+          <button type="button" class="btn" id="t3FoRevelar">Revelar el histograma</button>
+        </aside>
+        <div class="principal">
+          <div id="t3FoRes" aria-live="polite"></div>
+          <div id="t3FoBox" class="oculto">
+            <div id="t3FoHist"></div>
+            <p class="leyenda-t3"><span class="lm">Media</span><span class="lmd">Mediana</span></p>
+            <div class="control"><label for="t3FoBins">Número de intervalos <b id="t3FoBinsVal">12</b></label><input type="range" id="t3FoBins" min="4" max="40" value="12"></div>
+            <p class="small gris">La forma que «ves» depende del número de intervalos.</p>
+          </div>
+          <p class="small gris">Regla orientativa: asimetría entre −0,5 y 0,5 ≈ simétrica. SPSS y jamovi dan el <b>exceso de curtosis</b> (la normal vale 0): positivo = leptocúrtica (más valores muy alejados); cerca de 0 = mesocúrtica; negativo = platicúrtica.</p>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="t3-normal">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Prueba de atención con <b>M = 50 y DT = 10</b> (aproximadamente normal). ¿60 puntos es mucho o poco?</p>
+          <div class="control"><label for="t3NX">Puntuación de una persona <b id="t3NXVal">60</b></label><input type="range" id="t3NX" min="20" max="80" value="60"></div>
+          <div class="caja reto"><b>Prueba esto:</b> pon 40 y después 60. ¿Qué porcentaje queda entre las dos puntuaciones? ¿Y entre 30 y 70?</div>
+        </aside>
+        <div class="principal">
+          <div class="caja clave"><b>Idea clave.</b> La <b>puntuación z</b> dice a cuántas desviaciones típicas estás de la media. El área sombreada es el porcentaje de personas que sacan tu puntuación o menos.</div>
+          <div id="t3NPlot"></div>
+          <p id="t3NZ"></p>
+          <p class="small gris">Una puntuación poco frecuente no es, por sí sola, un diagnóstico. En «Para profundizar» tienes la tabla de la curva normal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ================================================================ T3 · 6 GRÁFICOS -->
+<section class="pestana" id="tab-graficos">
+<div class="paso-mod" data-paso="explora">
+  <div class="tarjeta-pestanas">
+    <div class="subnav" data-grupo="t3g">
+      <button data-sub="t3-graf" class="activo">Los gráficos de la clase</button>
+      <button data-sub="t3-trampa">El gráfico tramposo</button>
+    </div>
+    <div class="subpestana activa" id="t3-graf">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <div class="control"><label for="t3GTipo">Gráfico</label>
+            <select id="t3GTipo"><option value="barras">Barras: red social favorita</option><option value="hist">Histograma: horas de sueño</option><option value="caja">Caja y bigotes: horas de móvil según hace «previa»</option><option value="disp">Dispersión: horas de móvil y horas de sueño</option></select></div>
+          <p class="small" id="t3GNota"></p>
+        </aside>
+        <div class="principal">
+          <div class="caja clave"><b>Idea clave.</b> Categorías → barras. Una cuantitativa → histograma. Cuantitativa por grupos → cajas. Tiempo → líneas. Dos cuantitativas → dispersión.</div>
+          <div id="t3GPlot"></div>
+          <p class="small gris">Que dos cosas vayan juntas (asociación) no demuestra que una cause la otra (causalidad).</p>
+        </div>
+      </div>
+    </div>
+    <div class="subpestana" id="t3-trampa">
+      <div class="con-lateral">
+        <aside class="lateral">
+          <p class="small">Una cuenta de Instagram publica: «¡Las de Psicología van MUCHO más a festivales que los de ADE!»</p>
+          <div class="subnav-t3" id="t3Eje"><button type="button" class="activo" data-eje="trunc">Gráfico publicado</button><button type="button" data-eje="cero">Con el eje desde 0</button></div>
+          <div class="caja reto"><b>Prueba esto:</b> mira los números del eje vertical en los dos gráficos. ¿Cuántos puntos hay de diferencia?</div>
+        </aside>
+        <div class="principal">
+          <div id="t3Trampa"></div>
+          <div class="caja clave"><b>Para llevarte:</b> en un gráfico de barras el eje empieza en 0. Evita el 3D y los sectores con muchas categorías.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="pestana" id="tab-repaso3"></section>
+
 <section class="pestana" id="tab-repaso"></section>
 
 <!-- ================================================================ CUADERNO -->
@@ -584,7 +894,7 @@
   <div class="pie-txt">
     <b>Facultad de Psicología y Educación</b>
     <span>Grado en Psicología · Fundamentos de Investigación en Psicología</span>
-    <span>Faro estadístico · Tema 4 · Análisis inferencial de los datos · Curso 2026/27</span>
+    <span>Faro estadístico · Temas 3 y 4 · Análisis de datos · Curso 2026/27</span>
     <span class="pie-nota">Recurso docente con datos simulados</span>
   </div>
   <img src="img/Logo_ufv_blanco.png" alt="Universidad Francisco de Vitoria">
@@ -593,14 +903,19 @@
 <script src="js/estadistica.js"></script>
 <script src="js/graficos.js"></script>
 <script src="js/contenido.js"></script>
-<script src="js/app.js"></script>
+<script src="js/datos-t3.js?v=4"></script>
+<script src="js/contenido-t3.js?v=4"></script>
+<script src="js/app.js?v=4"></script>
+<script src="js/tema3.js?v=4"></script>
 <script defer src="js/antonio-config.js"></script>
 <script defer src="vendor/marked.umd.js"></script>
 <script defer src="vendor/purify.min.js"></script>
 <script defer src="vendor/katex/katex.min.js"></script>
 <script defer src="js/antonio-render.js?v=2"></script>
 <script defer src="js/antonio-chat.js?v=2"></script>
-<script src="js/tutor.js"></script>
+<script src="js/profundiza.js?v=4"></script>
+<script src="js/tutor.js?v=4"></script>
+<script src="js/tutorial.js?v=4"></script>
 <aside id="antonioPanel" class="antonio-panel" aria-hidden="true" aria-label="Panel de conversación con Antonio IA">
   <header class="antonio-head"><img src="img/antonio-ia.jpg" alt="Ilustración homenaje a Antonio Pardo Merino"><div><strong>Antonio IA</strong><small>Tutor de estadística · Homenaje académico</small></div><button type="button" id="antonioCerrar" aria-label="Cerrar Antonio IA">×</button></header>
   <div class="antonio-intro">Soy un asistente de IA inspirado en los materiales de la asignatura, no el profesor Antonio Pardo. Te ayudaré a razonar, paso a paso.</div>

@@ -60,11 +60,11 @@
   // Diálogos
   // ------------------------------------------------------------------
   const BIENVENIDA = [
-    "¡Hola, {alumno}! Te doy la bienvenida a Faro estadístico. Soy {la} {profe} {docente} y voy a acompañarte en el Tema 4: el análisis inferencial.",
-    "Faro estadístico tiene dos espacios: Fundamentos, con las ideas básicas, y Usar los estadísticos, donde aplicamos cada prueba. En cada módulo te explico la idea clave, exploras una simulación y practicas con ejercicios cortos basados en los casos de clase.",
-    "Aquí no hay nota. Si te equivocas, te daré una pista y otra oportunidad: lo que me interesa es que entiendas el razonamiento.",
-    "Al final tendrás tu cuaderno personal, con lo que ya dominas y lo que te conviene repasar. Y si te atascas en un ejercicio, puedes preguntarle a Antonio IA. Tu progreso se guarda solo en este navegador.",
-    "Te recomiendo empezar por Fundamentos y después pasar a Usar los estadísticos, aunque puedes ir directamente a lo que estemos viendo en clase. ¡Vamos allá!"
+    "¡Hola, {alumno}! Te doy la bienvenida a Faro estadístico. Soy {la} {profe} {docente} y voy a acompañarte en los Temas 3 y 4: el análisis de los datos.",
+    "Faro tiene dos temas. En el Tema 3, estadística descriptiva, aprenderás a resumir y representar los datos de tu muestra. En el Tema 4, estadística inferencial, darás el salto de la muestra a la población.",
+    "En cada módulo te explico la idea clave, exploras una simulación, practicas con ejercicios cortos y, si quieres, entras en «Para profundizar» para ver de dónde sale cada número.",
+    "Aquí no hay nota. Si te equivocas, te daré una pista y otra oportunidad. Al final tendrás tu cuaderno personal, y si te atascas puedes preguntarle a Antonio IA. Tu progreso se guarda solo en este navegador.",
+    "Te recomiendo empezar por el Tema 3, que es la base del 4, aunque puedes ir directamente a lo que estemos viendo en clase. ¿Por dónde empezamos?"
   ];
 
   const MODULOS = {
@@ -150,7 +150,7 @@
     repaso: {
       titulo: "Repaso final", corto: "Repaso",
       explica: [
-        "Este es el repaso final: preguntas mezcladas de los nueve módulos.",
+        "Este es el repaso final del Tema 4: preguntas mezcladas de los nueve módulos.",
         "Úsalo antes del examen. Lo que falles aparecerá en tu cuaderno como algo que repasar."
       ]
     }
