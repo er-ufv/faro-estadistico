@@ -1,0 +1,119 @@
+/* =====================================================================
+   profundiza.css — «Para profundizar», tutoriales y acceso al Tema 3
+   ===================================================================== */
+
+/* Botón de la barra de pasos */
+.pasos-mod .btn-prof { border-style: dashed !important; color: #5b3f8c; }
+.pasos-mod .btn-prof b { background: #efe8f8 !important; color: #5b3f8c; }
+.pasos-mod .btn-prof.activo { border-style: solid !important; border-color: #5b3f8c !important; background: #f6f1fb !important; box-shadow: inset 0 -3px 0 #5b3f8c !important; }
+.pasos-mod .btn-prof.activo b { background: #5b3f8c !important; color: #fff; }
+
+/* Contenedor */
+.prof { max-width: 1060px; }
+.prof-cab { background: #f6f1fb; border: 1px solid #e2d9f0; border-left: 5px solid #5b3f8c; border-radius: 14px; padding: 16px 20px; margin-bottom: 8px; }
+.prof-cab p { margin: 4px 0; }
+.prof-eti { display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #5b3f8c; }
+.prof-h { color: var(--azul); font-size: 1.15rem; font-weight: 800; margin: 26px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--borde); }
+.prof-fx > div { background: #fff; border: 1px solid var(--borde); border-radius: 12px; padding: 12px 14px; min-width: 0; }
+.prof-fx h4 { margin: 0 0 4px; color: var(--azul); font-size: .95rem; }
+.prof-fx .centro { text-align: center; }
+div.prof-fx:not(.rejilla) { margin-top: 10px; }
+.fx-d { display: block; overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+.fx-d .katex-display { margin: .4em 0; }
+
+/* Datos editables */
+.prof-datos { background: var(--claro); border: 1px solid var(--borde); border-radius: 12px; padding: 12px 16px; margin: 10px 0 6px; }
+.prof-datos p { margin: 4px 0; }
+.t-editor input, .prof-campos input, .prof-campos select, .prof-lupa input, .prof-lupa select {
+  width: 76px; padding: 6px 8px; border: 1px solid #b8c9da; border-radius: 8px; font: inherit; text-align: center; background: #fff; }
+.prof-campos { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: flex-end; }
+.prof-campos label { display: flex; flex-direction: column; gap: 4px; font-size: .88rem; font-weight: 700; color: var(--azul); }
+.prof-campos select { width: auto; text-align: left; }
+.t-editor th { white-space: nowrap; }
+.t-editor td { padding: 4px !important; }
+
+/* Pasos del ejemplo */
+.prof-paso { display: grid; grid-template-columns: 34px 1fr; gap: 12px; margin: 14px 0; }
+.prof-paso > div { min-width: 0; }
+.prof-n { width: 30px; height: 30px; border-radius: 50%; background: var(--azul); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.prof-paso h4 { margin: 4px 0 6px; color: var(--azul); font-size: 1rem; }
+.prof-paso p { margin: 6px 0; }
+.prof-grande { font-size: 1.25rem; font-weight: 800; color: var(--azul); }
+.prof-si { background: #e9f6ef; border-left: 4px solid var(--verde); }
+.prof-no { background: #fff6e8; border-left: 4px solid var(--ambar); }
+.caja.aviso { background: #fff6e8; border-left: 4px solid var(--ambar); }
+.prof-centro { text-align: center; }
+
+/* Tablas */
+.t-prof { font-size: .9rem; }
+.t-prof td, .t-prof th { text-align: center; }
+.t-prof .t-suma td { font-weight: 800; background: #f3f7fb; border-top: 2px solid var(--borde); }
+.t-gauss { font-size: .78rem; font-variant-numeric: tabular-nums; }
+.t-gauss td, .t-gauss th { padding: 3px 6px !important; }
+.t-crit { width: auto; font-variant-numeric: tabular-nums; }
+.marca-fila td, .marca-fila th { background: #fff3c4 !important; color: #003865 !important; }
+.marca-col { background: #fff3c4 !important; color: #003865 !important; }
+.t-gauss tr:first-child th { position: sticky; top: 0; z-index: 1; }
+.t-prof td.marca { background: var(--rojo) !important; color: #fff; font-weight: 800; }
+.t-formulario td { text-align: left; vertical-align: middle; }
+.t-formulario td:nth-child(3) { min-width: 210px; }
+details.prof-tabla { margin: 10px 0; background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 8px 12px; }
+details.prof-tabla summary { cursor: pointer; font-weight: 700; color: var(--azul); }
+details.prof-tabla[open] summary { margin-bottom: 8px; }
+details.prof-tabla .tabla-scroll { max-height: 420px; overflow: auto; }
+
+/* Curva normal */
+.prof-lupa { background: #fff; border: 1px solid var(--borde); border-radius: 12px; padding: 14px 16px; }
+.prof-lupa-res { display: grid; grid-template-columns: minmax(0, 360px) 1fr; gap: 16px; align-items: center; margin-top: 10px; }
+.prof-curva { width: 100%; max-width: 360px; height: auto; }
+.sv-linea { fill: none; stroke: var(--azul); stroke-width: 2; }
+.sv-area { fill: #bfdDf7; fill: var(--suave); opacity: .9; }
+.sv-cola { fill: var(--rojo); opacity: .55; }
+.sv-eje { stroke: #8a99a8; stroke-width: 1; }
+.sv-z { stroke: var(--rojo); stroke-width: 2; stroke-dasharray: 4 3; }
+.sv-txt { font-size: 11px; fill: #4a5866; text-anchor: middle; font-family: inherit; }
+.sv-zt { fill: var(--rojo); font-weight: 700; }
+.prof-ej .cuerpo p { margin: 6px 0; }
+
+@media (max-width: 720px) {
+  .prof-lupa-res { grid-template-columns: 1fr; }
+  .prof-paso { grid-template-columns: 26px 1fr; gap: 8px; }
+  .prof-n { width: 24px; height: 24px; font-size: .8rem; }
+  .t-editor input { width: 58px; }
+}
+
+/* ---------------------------------------------------------------- Tutoriales */
+.nav a.nav-enlace { display: inline-flex; align-items: center; padding: 8px 15px; border-radius: 999px; font-size: .92rem; font-weight: 600; color: var(--azul); text-decoration: none; }
+.nav a.nav-enlace:hover { background: var(--claro); }
+.nav a.nav-ayuda { box-shadow: inset 0 0 0 1.5px var(--suave); }
+.tuto-fondo { position: fixed; inset: 0; background: rgba(0, 30, 60, .55); z-index: 900; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.tuto-fondo[hidden] { display: none; }
+.tuto { background: #fff; border-radius: 16px; width: min(760px, 100%); max-height: calc(100vh - 32px); overflow: auto; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+.tuto-cab { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--borde); position: sticky; top: 0; background: #fff; z-index: 1; }
+.tuto-cab h2 { margin: 0; font-size: 1.1rem; color: var(--azul); }
+.tuto-cerrar { border: 0; background: var(--claro); color: var(--azul); width: 34px; height: 34px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; }
+.tuto-temas { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 18px 0; }
+.tuto-temas button { border: 1px solid var(--borde); background: #fff; border-radius: 999px; padding: 6px 12px; font: inherit; font-size: .85rem; cursor: pointer; color: var(--azul); }
+.tuto-temas button.activo { background: var(--azul); color: #fff; border-color: var(--azul); }
+.tuto-cuerpo { padding: 14px 18px 6px; }
+.tuto-cuerpo h3 { margin: 4px 0 8px; color: var(--azul); }
+.tuto-cuerpo img { width: 100%; max-height: 260px; object-fit: cover; object-position: top; border-radius: 10px; border: 1px solid var(--borde); margin: 6px 0 10px; }
+.tuto-cuerpo ol { padding-left: 20px; margin: 6px 0; }
+.tuto-cuerpo li { margin: 5px 0; }
+.tuto-pie { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 18px 16px; }
+.tuto-puntos { display: flex; gap: 6px; }
+.tuto-puntos i { width: 8px; height: 8px; border-radius: 50%; background: var(--borde); }
+.tuto-puntos i.on { background: var(--rojo); }
+.tuto-ico { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: var(--claro); color: var(--azul); align-items: center; justify-content: center; font-weight: 800; margin-right: 6px; }
+.tuto-pasos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 10px 0; }
+.tuto-pasos span { border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: .85rem; color: #fff; }
+@media (max-width: 600px) { .tuto-pasos { grid-template-columns: 1fr 1fr; } }
+
+/* ---------------------------------------------------------------- Tema 3 */
+.espacio.esp-tema3 { background: linear-gradient(135deg, #fdf6e9, #fff); border-color: #ecd9b4; }
+.espacio.esp-tema3 .eti-espacio { color: #a0680a; }
+
+.tuto-elegir { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tuto-elegir .btn { width: 100%; justify-content: center; }
+.tuto-temas2 .caja { margin: 0; font-size: .92rem; }
+@media (max-width: 600px) { .tuto-elegir { grid-template-columns: 1fr; } }

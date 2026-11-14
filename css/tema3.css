@@ -1,0 +1,35 @@
+/* =====================================================================
+   tema3.css — Tema 3 (descriptiva) y elección de tema en la portada
+   ===================================================================== */
+.elige-tema { color: var(--azul); font-size: 1.4rem; margin: 22px 0 6px; }
+.temas-elegir .tema-card { padding: 24px 26px 20px; border-width: 2px; }
+.temas-elegir .tema-card h2 { font-size: 1.75rem; }
+.tema3-card { background: linear-gradient(140deg, #fff8ec 0%, #fff 70%); border-color: #ecd9b4; }
+.tema3-card .eti-espacio { color: #a0680a; }
+.tema4-card { background: linear-gradient(140deg, #eaf3fd 0%, #fff 70%); border-color: #c6dbf1; }
+.banner-t3 { background: linear-gradient(135deg, #5a3b06 0%, #8a5a0a 55%, #c98a1a 100%) !important; }
+.para-que .caja { margin: 0; }
+.t3-datos { background: var(--claro); display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.t3-datos .btn { margin: 0; }
+.t-ufv tr.t-suma td { font-weight: 800; background: #f3f7fb; }
+.t-ufv tr.t-tema td { background: var(--azul); color: #fff; font-weight: 800; text-align: left; letter-spacing: .02em; }
+
+/* Leyendas de los gráficos */
+.leyenda-t3 { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .85rem; color: #475467; margin: 4px 0 8px; }
+.leyenda-t3 span { display: inline-flex; align-items: center; gap: 6px; }
+.leyenda-t3 span::before { content: ""; width: 22px; height: 0; border-top: 3px solid; }
+.leyenda-t3 .lm::before { border-color: #0b4f8a; }
+.leyenda-t3 .lmd::before { border-color: #b45309; border-top-style: dashed; }
+.leyenda-t3 .lmo::before { border-color: #5b3fa8; border-top-style: dotted; }
+.extremos-t3 { display: flex; justify-content: space-between; font-size: .8rem; color: var(--gris); }
+.fila-num-t3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 8px 0; }
+.fila-num-t3 label { display: flex; flex-direction: column; font-size: .8rem; font-weight: 600; color: var(--azul); gap: 3px; }
+.fila-num-t3 input, .campo-t3 { width: 100%; padding: 7px 8px; border: 1px solid #b8c9da; border-radius: 8px; font: inherit; text-align: center; }
+.subnav-t3 { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+.subnav-t3 button { border: 1px solid var(--borde); background: #fff; color: var(--azul); border-radius: 999px; padding: 7px 12px; font: inherit; font-size: .88rem; cursor: pointer; }
+.subnav-t3 button.activo { background: var(--azul); color: #fff; border-color: var(--azul); }
+#tab-variables svg, #tab-central svg, #tab-posicion svg, #tab-dispersion svg, #tab-forma svg, #tab-graficos svg { width: 100%; height: auto; display: block; }
+@media (max-width: 720px) { .fila-num-t3 { grid-template-columns: repeat(2, 1fr); } .temas-elegir .tema-card h2 { font-size: 1.4rem; } }
+
+#espaciosInicio .gem-tarjeta.mini { margin: 0; }
+#espaciosInicio > .rejilla:last-child { margin-bottom: 18px; }
